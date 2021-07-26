@@ -36,3 +36,11 @@ module BlogJt
     config.generators.system_tests = nil
   end
 end
+
+module RailsI18n
+  class Application < Rails::Application
+    config.i18n.available_locales = %i(ja en zh)
+    config.i18n.enforce_available_locales = true
+    config.i18n.default_locale = :ja
+  end
+end
