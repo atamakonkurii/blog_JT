@@ -36,4 +36,6 @@ yarn-debug.log*
 .yarn-integrity
 
 #Ignore uploaded files in development
-/config/database.yml
+#credentialsの運用に切り替えたため、git管理下に変更
+#/config/database.yml
+/config/credentials/development.key
