@@ -11,6 +11,9 @@
   </head>
 
   <body>
+    <% I18n.available_locales.reject{|l| l == I18n.locale}.each do |locale| %>
+    <%= link_to(locale, i18n_url_for(params.permit.merge(locale: locale))) %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
