@@ -41,6 +41,7 @@ jobs:
         RAILS_ENV: test
         RAILS_MASTER_KEY: ${{ secrets.RAILS_TEST_KEY }}
       run: |
+        sudo systemctl start mysql
         bundle exec rake db:create
         bundle exec rake db:schema:load
 
