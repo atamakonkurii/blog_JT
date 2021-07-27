@@ -37,13 +37,16 @@ jobs:
     
     #tテスト環境用のDBを作成
     - name: Setup Database
+      env:
+        RAILS_ENV: test
+        RAILS_TEST_KEY: ${{ secrets.RAILS_TEST_KEY }}
       run: |
         bundle exec rake db:create
         bundle exec rake db:schema:load
-      env:
-        RAILS_ENV: test
+
 
     - name: Run RSpec
-      run: bundle exec rspec
       env:
         RAILS_ENV: test
+        RAILS_TEST_KEY: ${{ secrets.RAILS_TEST_KEY }}
+      run: bundle exec rspec
