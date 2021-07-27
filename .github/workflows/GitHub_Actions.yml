@@ -39,7 +39,7 @@ jobs:
     - name: Setup Database
       env:
         RAILS_ENV: test
-        RAILS_TEST_KEY: ${{ secrets.RAILS_TEST_KEY }}
+        RAILS_MASTER_KEY: ${{ secrets.RAILS_TEST_KEY }}
       run: |
         bundle exec rake db:create
         bundle exec rake db:schema:load
@@ -48,5 +48,5 @@ jobs:
     - name: Run RSpec
       env:
         RAILS_ENV: test
-        RAILS_TEST_KEY: ${{ secrets.RAILS_TEST_KEY }}
+        RAILS_MASTER_KEY: ${{ secrets.RAILS_TEST_KEY }}
       run: bundle exec rspec
