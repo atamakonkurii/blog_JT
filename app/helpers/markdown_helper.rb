@@ -1,6 +1,8 @@
+require 'redcarpet'
+require 'rouge'
 require 'rouge/plugins/redcarpet'
 
-class HTML < Redcarpet::Render::HTML
+class CustomMarkdownRenderer < Redcarpet::Render::HTML
   include Rouge::Plugins::Redcarpet
 end
 
@@ -24,7 +26,7 @@ module MarkdownHelper
       superscript: true,
       tables: true
     }
-    renderer = Redcarpet::Render::HTML.new(options)
+    renderer = ::CustomMarkdownRenderer.new(options)
     @markdown = Redcarpet::Markdown.new(renderer, extensions)
     @markdown.render(text).html_safe
   end
