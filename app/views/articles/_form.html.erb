@@ -17,11 +17,29 @@
   </div>
 
   <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
+    <div id='editor'>
+      <%= form.label :content %>
+      <%= form.text_area :content, rows: 5, class: 'form-control', id: 'article_content', "v-model" => "input", name: "article[content]" %>
+      <div v-html='input | marked'></div>
+    </div>
   </div>
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+
+<!-- リアルタイムプレビュー -->
+<script type="text/javascript">
+    window.onload = function() {
+        new Vue({
+            el: '#editor',
+            data: {
+                input: '<%== j @article.content %>',
+            },
+            filters: {
+                marked: marked,
+            },
+        });
+    };
+</script>
