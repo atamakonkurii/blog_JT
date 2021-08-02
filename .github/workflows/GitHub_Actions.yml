@@ -56,6 +56,3 @@ jobs:
         RAILS_ENV: test
         RAILS_MASTER_KEY: ${{ secrets.RAILS_TEST_KEY }}
       run: bundle exec rubocop
-
-    - name: Rubocop checks
-      uses: gimenete/rubocop-action@1.0
