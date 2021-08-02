@@ -50,9 +50,3 @@ jobs:
         RAILS_ENV: test
         RAILS_MASTER_KEY: ${{ secrets.RAILS_TEST_KEY }}
       run: bundle exec rspec
-
-    - name: Run RuboCop
-      env:
-        RAILS_ENV: test
-        RAILS_MASTER_KEY: ${{ secrets.RAILS_TEST_KEY }}
-      run: bundle exec rubocop
