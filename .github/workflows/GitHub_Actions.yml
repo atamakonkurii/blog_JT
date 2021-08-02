@@ -23,7 +23,7 @@ jobs:
       uses: ruby/setup-ruby@473e4d8fe5dd94ee328fdfca9f8c9c7afc9dae5e
       with:
         ruby-version: ${{ matrix.ruby-version }}
-        
+
     #MySQLをインストール
     - name: Install dependent libralies
       run: sudo apt-get install libmysqlclient-dev
@@ -34,7 +34,7 @@ jobs:
     - name: bundle install
       run: |
         bundle install --jobs 4 --retry 3
-    
+
     #tテスト環境用のDBを作成
     - name: Setup Database
       env:
@@ -53,7 +53,7 @@ jobs:
       run: bundle exec rspec
 
     - name: Run RuboCop
-        env:
-          RAILS_ENV: test
-          RAILS_MASTER_KEY: ${{ secrets.RAILS_TEST_KEY }}
-        run: bundle exec rubocop
+      env:
+        RAILS_ENV: test
+        RAILS_MASTER_KEY: ${{ secrets.RAILS_TEST_KEY }}
+      run: bundle exec rubocop
