@@ -2,13 +2,13 @@
 
 <p>
   <strong>Title:</strong>
-  <%= @article.title %>
+  <%= @article.title_ja %>
 </p>
 
 <p>
   <strong>Content:</strong>
-  <%= toc(@article.content) %>
-  <%= markdown(@article.content) %>
+  <%= toc(@article.content_ja) %>
+  <%= markdown(@article.content_ja) %>
 </p>
 
 <%= link_to 'Edit', edit_article_path(@article) %> |
