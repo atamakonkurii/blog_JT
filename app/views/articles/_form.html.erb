@@ -12,14 +12,14 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.label :title_ja %>
+    <%= form.text_field :title_ja %>
   </div>
 
   <div class="field">
     <div id='editor'>
-      <%= form.label :content %>
-      <%= form.text_area :content, rows: 5, class: 'form-control', id: 'article_content', "v-model" => "input", name: "article[content]" %>
+      <%= form.label :content_ja %>
+      <%= form.text_area :content_ja, rows: 5, class: 'form-control', id: 'article_content_ja', "v-model" => "input", name: "article[content_ja]" %>
       <div v-html='input | marked'></div>
     </div>
   </div>
@@ -35,7 +35,7 @@
         new Vue({
             el: '#editor',
             data: {
-                input: '<%== j @article.content %>',
+                input: '<%== j @article.content_ja %>',
             },
             filters: {
                 marked: marked,

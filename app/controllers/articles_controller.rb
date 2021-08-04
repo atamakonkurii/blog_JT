@@ -52,7 +52,7 @@ class ArticlesController < ApplicationController
     @article.destroy
     respond_to do |format|
       format.html { redirect_to articles_url, notice: "Article was successfully destroyed." }
-      format.json { head :no_content }
+      format.json { head :no_content_ja }
     end
   end
 
@@ -64,6 +64,6 @@ class ArticlesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def article_params
-      params.require(:article).permit(:title, :content)
+      params.require(:article).permit(:title_ja, :content_ja)
     end
 end
