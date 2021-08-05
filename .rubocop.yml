@@ -6,6 +6,7 @@ Style/AsciiComments:
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
+    - 'db/**'
 
 Documentation:
   Enabled: false
