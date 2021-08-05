@@ -1,4 +1,3 @@
-# ユーザークラス
 class User < ApplicationRecord
   before_save { self.email = email.downcase }
   validates :name, presence: true, length: { maximum: 30 }
@@ -7,4 +6,7 @@ class User < ApplicationRecord
   has_secure_password
   VALID_PASSWORD_REGEX = /\A[\w\-]+\z/
   validates :password, presence: true, length: { minimum: 8 }, format: { with: VALID_PASSWORD_REGEX }
+
+  has_many :articles, dependent: :destroy
+  has_many :comments, dependent: :destroy
 end
