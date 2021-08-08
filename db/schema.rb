@@ -13,13 +13,13 @@
 ActiveRecord::Schema.define(version: 2021_08_08_073901) do
 
   create_table "articles", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.integer "main_language", null: false
     t.string "title_ja"
     t.text "content_ja"
     t.string "title_zh_tw"
     t.text "content_zh_tw"
     t.string "title_en"
     t.text "content_en"
+    t.integer "main_language", null: false
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -35,8 +35,8 @@ ActiveRecord::Schema.define(version: 2021_08_08_073901) do
 
   create_table "places", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "country", null: false
-    t.integer "prefecture_japan"
-    t.integer "prefecture_taiwan"
+    t.integer "prefecture_japan_id"
+    t.integer "prefecture_taiwan_id"
     t.integer "article_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
