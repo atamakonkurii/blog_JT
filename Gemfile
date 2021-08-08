@@ -59,3 +59,5 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'redcarpet'
 gem 'rouge'
+
+gem 'active_hash'
