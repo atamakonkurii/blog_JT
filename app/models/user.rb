@@ -9,4 +9,6 @@ class User < ApplicationRecord
 
   has_many :articles, dependent: :destroy
   has_many :comments, dependent: :destroy
+
+  enum native_language: { japanese: 0, taiwanese: 1, english: 2 }
 end
