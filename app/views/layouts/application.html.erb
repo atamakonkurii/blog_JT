@@ -24,5 +24,6 @@
     <%= link_to(locale, i18n_url_for(params.permit.merge(locale: locale))) %>
     <% end %>
     <%= yield %>
+    <%= render 'layouts/footer' %>
   </body>
 </html>
