@@ -148,9 +148,9 @@ zh-TW:
     select:
       prompt: 請選擇
     submit:
-      create: 新增%{model}
-      submit: 儲存%{model}
-      update: 更新%{model}
+      create: 新增
+      submit: 儲存
+      update: 更新
   number:
     currency:
       format:
