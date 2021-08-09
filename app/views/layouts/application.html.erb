@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BlogJt</title>
+    <title>日台one!</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
     <% stylesheet_link_tag  "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" %>
@@ -14,13 +14,13 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <% I18n.available_locales.reject{|l| l == I18n.locale}.each do |locale| %>
-    <%= link_to(locale, i18n_url_for(params.permit.merge(locale: locale))) %>
-    <% end %>
+    <%= render 'layouts/navbar' %>
     <%= yield %>
+    <%= render 'layouts/footer' %>
   </body>
 </html>

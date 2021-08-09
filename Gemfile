@@ -61,3 +61,5 @@ gem 'redcarpet'
 gem 'rouge'
 
 gem 'active_hash'
+
+gem 'tailwindcss-rails'
