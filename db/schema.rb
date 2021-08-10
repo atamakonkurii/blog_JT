@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_08_102444) do
+ActiveRecord::Schema.define(version: 2021_08_10_115541) do
 
   create_table "articles", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title_ja"
@@ -45,17 +45,6 @@ ActiveRecord::Schema.define(version: 2021_08_08_102444) do
   create_table "tags", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "name", null: false
     t.integer "article_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name", limit: 30, null: false
-    t.string "email", null: false
-    t.string "password_digest", null: false
-    t.boolean "activated", default: false, null: false
-    t.boolean "admin", default: false, null: false
-    t.integer "native_language", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
