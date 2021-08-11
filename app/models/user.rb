@@ -8,6 +8,7 @@ class User < ApplicationRecord
     user = User.where(uid: auth.uid, provider: auth.provider).first
 
     user ||= User.create(
+      name: "dummy",
       uid: auth.uid,
       provider: auth.provider,
       email: User.dummy_email(auth),

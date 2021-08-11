@@ -1,10 +1,10 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def facebook
-    callback_for(:facebook)
+    callback_from(:facebook)
   end
 
   def google_oauth2
-    callback_for(:google)
+    callback_from(:google)
   end
 
   private
