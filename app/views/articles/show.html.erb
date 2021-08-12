@@ -15,7 +15,9 @@
       <p class="text-sm md:text-base font-normal text-gray-600"><%= @article.created_at.localtime %></p>
     </div>
 
-    <%= markdown(@article.content_ja) %>
+    <div class="markdown">
+      <%= markdown(@article.content_ja)%>
+    </div>
 
   </div>
 
