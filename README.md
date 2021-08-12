@@ -6,6 +6,12 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version
+rbenv version
+3.0.0
+
+rails -v
+Rails 6.1.4
+
 
 * System dependencies
 
