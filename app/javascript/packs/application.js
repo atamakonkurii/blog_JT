@@ -4,14 +4,14 @@
 // that code so it'll be compiled.
 
 require("@rails/ujs").start()
-require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+window.$ = window.jQuery = require('jquery');
+
+import "./inline_attachment/inline-attachment"
+import "./inline_attachment/jquery.inline-attachment"
+import "./article/article"
 
 import "../css/tailwindcss.css";
+import "../stylesheets/application"
 
-import "stylesheets/application"
-
-Rails.start()
-Turbolinks.start()
-ActiveStorage.start()
