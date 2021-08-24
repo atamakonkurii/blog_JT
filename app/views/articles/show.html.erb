@@ -10,7 +10,9 @@
       <%= link_to(articles_path) do %>
         <p class="text-nittai_teal md:text-sm text-green-500 font-bold">&lt; BACK TO ARTICLES</p>
       <% end %>
-      <%= link_to 'Edit', edit_article_path(@article) %>
+      <% if current_user&.admin? %>
+        <%= link_to 'Edit', edit_article_path(@article) %>
+      <% end %>
       <h1 class="font-bold font-sans break-normal text-gray-900 pt-6 pb-2 text-3xl md:text-4xl"><%= @article.title_ja %></h1>
       <p class="text-sm md:text-base font-normal text-gray-600"><%= @article.created_at.localtime %></p>
     </div>
