@@ -19,6 +19,14 @@
       }
   </style>
   <div class="editor mx-auto w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl">
+    <div class="field bg-gray-100 border border-gray-300 p-2 mb-4 outline-none">
+      <%= form.label :title_image %>
+      <%= form.file_field :title_image %>
+<!--      アップロードした画像があれば表示する-->
+      <% if article.title_image.attached? %>
+        <%= image_tag article.title_image %>
+      <% end %>
+    </div>
     <%= form.text_area :title_ja, class: "title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none", spellcheck: "false", placeholder: "Title", type: "text" %>
     <%= form.text_area :content_ja, class: "uploadable description bg-gray-100 sec p-3 h-60 border border-gray-300 outline-none", spellcheck: "false", placeholder: "Describe everything about this post here" %>
     <!-- icons -->
