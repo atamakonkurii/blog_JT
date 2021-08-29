@@ -1,7 +1,7 @@
 <section class="text-gray-600 body-font">
   <div class="container px-5 py-24 mx-auto">
     <div class="flex flex-wrap -m-4">
-      <% @articles.each do |article| %>
+      <% @articles.order(id: "DESC").each do |article| %>
         <%= link_to(article) do %>
           <div class="p-4 md:w-1/3">
             <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
@@ -19,6 +19,11 @@
                 <div class="flex items-center flex-wrap ">
                   <a class="text-blue-500 inline-flex items-center md:mb-2 lg:mb-0">
                   </a>
+                  <p class="text-sm md:text-base font-normal text-gray-400">
+                    <time datetime="<%= article.created_at %>">
+                      <%= time_ago_in_words(article.created_at) %>前
+                    </time>
+                  </p>
 <!--                  <span class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">-->
 <!--                <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">-->
 <!--                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>-->
