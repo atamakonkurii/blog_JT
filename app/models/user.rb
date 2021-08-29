@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   # デフォルトの設定に、:omniauthable以下を追加
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable,
+  devise :database_authenticatable,
+         :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[facebook google_oauth2]
 
   def self.find_for_oauth(auth)
