@@ -17,7 +17,11 @@
         <%= image_tag @article.title_image %>
       <% end %>
       <h1 class="font-bold font-sans break-normal text-gray-900 pt-6 pb-2 text-3xl md:text-4xl"><%= @article.title_ja %></h1>
-      <p class="text-sm md:text-base font-normal text-gray-600"><%= @article.created_at.localtime.to_date %></p>
+      <p class="text-sm md:text-base font-normal text-gray-600">
+        <time datetime="<%= @article.created_at %>">
+          <%= time_ago_in_words(@article.created_at) %>前
+        </time>
+      </p>
     </div>
 
     <div class="markdown">
