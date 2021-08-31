@@ -48,34 +48,3 @@ append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "node_module
 
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
-
-namespace :deploy do
-  desc "Make sure local git is in sync with remote."
-  task :confirm do
-    on roles(:app) do
-      puts "This stage is '#{fetch(:stage)}'. Deploying branch is '#{fetch(:branch)}'."
-      puts 'Are you sure? [y/n]'
-      ask :answer, 'n'
-      if fetch(:answer) != 'y'
-        puts 'deploy stopped'
-        exit
-      end
-    end
-  end
-
-  desc 'Initial Deploy'
-  task :initial do
-    on roles(:app) do
-      invoke 'deploy'
-    end
-  end
-
-  desc "Restart Application"
-  task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
-      invoke 'puma:restart'
-    end
-  end
-
-  before :starting, :confirm
-end
