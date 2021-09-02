@@ -308,6 +308,8 @@ GEM
     sshkit (1.21.2)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
+    sshkit-sudo (0.1.0)
+      sshkit (~> 1.8)
     tailwindcss-rails (0.3.3)
       rails (>= 6.0.0)
     thor (1.1.0)
@@ -373,6 +375,7 @@ DEPENDENCIES
   sass-rails (>= 6)
   spring
   spring-commands-rspec
+  sshkit-sudo
   tailwindcss-rails
   turbolinks (~> 5)
   tzinfo-data
