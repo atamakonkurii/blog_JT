@@ -12,8 +12,6 @@ set :puma_service_unit_name, 'puma_blog_JT_production.service'
 set :nginx_config_name, "#{fetch(:application)}.conf"
 set :nginx_sites_enabled_path, "/etc/nginx/conf.d"
 
-set :pty, true
-
 append :linked_files, "config/credentials/production.key"
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "node_modules"
 
@@ -31,7 +29,7 @@ append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "node_module
 # set :format_options, command_output: true, log_file: "log/capistrano.log", color: :auto, truncate: :auto
 
 # Default value for :pty is false
-# set :pty, true
+set :pty, true
 
 # Default value for :linked_files is []
 # append :linked_files, "config/database.yml"

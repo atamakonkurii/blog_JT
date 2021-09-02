@@ -147,6 +147,7 @@
     <orderEntry type="library" scope="PROVIDED" name="sprockets (v4.0.2, rbenv: 3.0.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sprockets-rails (v3.2.2, rbenv: 3.0.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sshkit (v1.21.2, rbenv: 3.0.0) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="sshkit-sudo (v0.1.0, rbenv: 3.0.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tailwindcss-rails (v0.3.3, rbenv: 3.0.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="thor (v1.1.0, rbenv: 3.0.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tilt (v2.0.10, rbenv: 3.0.0) [gem]" level="application" />
@@ -173,6 +174,7 @@
         <option value="application_record" />
         <option value="assets" />
         <option value="benchmark" />
+        <option value="capistrano:nginx_puma:config" />
         <option value="channel" />
         <option value="controller" />
         <option value="devise" />
@@ -237,6 +239,7 @@
         <option value="application_record" />
         <option value="assets" />
         <option value="benchmark" />
+        <option value="capistrano:nginx_puma:config" />
         <option value="channel" />
         <option value="controller" />
         <option value="devise" />
