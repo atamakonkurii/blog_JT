@@ -58,9 +58,10 @@ group :development do
   gem 'capistrano-rbenv', '~> 2.2'
   gem 'capistrano-rbenv-vars', '~> 0.1'
   gem 'capistrano3-puma'
-  # ***** sudo 実行時にパスワード入力できるようにするため以下を追加 *****
-  gem 'sshkit-sudo'
 end
+
+# ***** sudo 実行時にパスワード入力できるようにするため以下を追加 *****
+gem 'sshkit-sudo'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
