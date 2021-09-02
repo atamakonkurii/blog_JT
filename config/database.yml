@@ -51,5 +51,5 @@ test:
 production:
   <<: *default
   database: blog_JT_production
-  username: blog_JT
-  password: <%= ENV['BLOG_JT_DATABASE_PASSWORD'] %>
+  username: <%= Rails.application.credentials.mysql[:username] %>
+  password: <%= Rails.application.credentials.mysql[:password] %>
