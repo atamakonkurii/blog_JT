@@ -76,8 +76,8 @@ gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem "omniauth-rails_csrf_protection"
 
-# Use ActiveStorage variant
-gem 'mini_magick', '~> 4.8'
-gem 'image_processing', '~> 1.2'
+gem 'carrierwave'
+gem 'fog-aws'
+gem 'rmagick'
 
 gem "aws-sdk-s3", require: false

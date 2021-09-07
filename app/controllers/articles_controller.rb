@@ -56,7 +56,7 @@ class ArticlesController < ApplicationController
 
   # DELETE /articles/1 or /articles/1.json
   def destroy
-    @article.title_image.purge if @article.title_image.attached?
+    @article.title_image.purge if @article.title_image.present?
     @article.destroy
     respond_to do |format|
       format.html { redirect_to articles_url, notice: "Article was successfully destroyed." }
