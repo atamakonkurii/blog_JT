@@ -23,8 +23,8 @@
       <%= form.label :title_image %>
       <%= form.file_field :title_image %>
 <!--      アップロードした画像があれば表示する-->
-      <% if article.title_image.attached? %>
-        <%= image_tag article.title_image %>
+      <% if article.title_image.present? %>
+        <%= image_tag article.title_image.url %>
       <% end %>
     </div>
     <%= form.text_area :title_ja, class: "title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none", spellcheck: "false", placeholder: "Title", type: "text" %>
