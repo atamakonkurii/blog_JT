@@ -25,6 +25,40 @@
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
       <excludeFolder url="file://$MODULE_DIR$/public/system" />
       <excludeFolder url="file://$MODULE_DIR$/components" />
+      <excludeFolder url="file://$MODULE_DIR$/public/uploads/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/public/assets" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/0a" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/0z" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/4x" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/9q" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/09" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/15" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/76" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/al" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/bi" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/cw" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/de" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/f7" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/hb" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/hd" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/hi" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/hq" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/ik" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/it" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/iw" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/kf" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/mi" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/p5" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/ph" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/r5" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/sp" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/ta" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/wh" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/wr" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/ww" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/yb" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/yn" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/z5" />
     </content>
     <orderEntry type="jdk" jdkName="rbenv: 3.0.0" jdkType="RUBY_SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
