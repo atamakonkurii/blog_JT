@@ -7,5 +7,6 @@ if Rails.env.production?
       region: Rails.application.credentials.dig(:aws, :s3, :region)
     }
     config.fog_directory = Rails.application.credentials.dig(:aws, :s3, :bucket)
+    config.asset_host = "https://static.nittai-one.com"
   end
 end
