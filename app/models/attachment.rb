@@ -1,3 +1,3 @@
 class Attachment < ApplicationRecord
-  has_one_attached :image
+  mount_uploader :article_image, ArticleImageUploader
 end

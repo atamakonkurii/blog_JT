@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[ index show ]
-  before_action :set_article, only: %i[ show edit update destroy ]
+  before_action :set_article, only: %i[ show edit update destroy]
 
   # GET /articles or /articles.json
   def index
@@ -65,8 +65,8 @@ class ArticlesController < ApplicationController
   end
 
   def attach
-    attachment = Attachment.create! image: params[:image]
-    render json: { filename: url_for(attachment.image) }
+    attachment = Attachment.create!(article_image: params[:image])
+    render json: { filename: attachment.article_image.url }
   end
 
   private
