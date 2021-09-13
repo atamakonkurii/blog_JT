@@ -1,14 +1,11 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
-  before_action :authenticate_user!, only: [:mypage, :edit, :update]
+  before_action :authenticate_user!, only: [:my_page, :edit, :update]
 
-  def show
-  end
+  def show; end
 
   def edit
-    unless @user == current_user
-      redirect_to user_path(@user)
-    end
+    redirect_to user_path(@user) unless @user == current_user
   end
 
   def update
@@ -19,7 +16,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def mypage
+  def my_page
     redirect_to user_path(current_user)
   end
 
@@ -32,5 +29,4 @@ class UsersController < ApplicationController
   def user_params
     params.fetch(:user, {}).permit(:name)
   end
-
 end
