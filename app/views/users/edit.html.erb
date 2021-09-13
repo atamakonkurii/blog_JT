@@ -1,6 +1,13 @@
 <h1>プロフィール編集</h1>
 
 <%= form_with model: @user do |form| %>
-  <div>name<%= form.text_field :name %></div>
+  <div>
+    <%= form.label "表示名設定して下さい" %>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label "Native Language" %>
+    <%= form.select :native_language, User.native_languages.keys %>
+  </div>
   <div><%= form.submit "保存" %></div>
 <% end %>

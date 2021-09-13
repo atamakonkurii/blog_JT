@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  has_many :articles
+  has_many :comments
+  enum native_language: { japanese: 0, taiwanese: 1, english: 2 }
+
   # デフォルトの設定に、:omniauthable以下を追加
   devise :database_authenticatable,
          :rememberable, :validatable,
