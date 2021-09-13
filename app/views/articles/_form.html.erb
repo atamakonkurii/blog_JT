@@ -31,8 +31,11 @@
         <%= s.label :国 %>
         <%= s.select :country, Place.countries.keys, {include_blank: "---"} %>
 
-        <%= s.label :都道府県 %>
+        <%= s.label :日本の場合 %>
         <%= s.collection_select(:prefecture_japan_id, PrefectureJapan.all, :id, :name, {include_blank: "---"} ) %>
+
+        <%= s.label :台湾の場合 %>
+        <%= s.collection_select(:prefecture_taiwan_id, PrefectureTaiwan.all, :id, :name, {include_blank: "---"} ) %>
       <% end %>
     </div>
 
