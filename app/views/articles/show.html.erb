@@ -22,6 +22,13 @@
           <%= I18n.l(@article.created_at.localtime, format: :long) %>
         </time>
       </p>
+      <p class="text-sm md:text-base font-normal text-gray-600">
+        <% if @article.place.country == "japan" %>
+          <%= "日本 #{@article.place.prefecture_japan.name}" %>
+        <% elsif @article.place.country == "taiwan" %>
+          <%= "台灣 #{@article.place.prefecture_taiwan.name}" %>
+        <% end %>
+      </p>
     </div>
 
     <div class="markdown">

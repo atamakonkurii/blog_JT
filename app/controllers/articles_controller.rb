@@ -14,6 +14,7 @@ class ArticlesController < ApplicationController
   # GET /articles/new
   def new
     @article = Article.new
+    @article.build_place
   end
 
   # GET /articles/1/edit
@@ -24,7 +25,6 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     @article.user_id = current_user.id
-    @article.place_id = 1
     @article.main_language = "japanese"
 
     respond_to do |format|
@@ -41,7 +41,6 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1 or /articles/1.json
   def update
     @article.user_id = current_user.id
-    @article.place_id = 1
 
     respond_to do |format|
       if @article.update(article_params)
@@ -77,6 +76,7 @@ class ArticlesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def article_params
-      params.require(:article).permit(:title_ja, :content_ja, :title_image)
+      params.require(:article).permit(:title_ja, :content_ja, :title_image,
+                                      place_attributes: [:id, :country, :prefecture_japan_id, :prefecture_taiwan_id])
     end
 end
