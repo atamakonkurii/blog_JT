@@ -7,9 +7,6 @@
 
     <!--Title-->
     <div class="font-sans">
-      <%= link_to(articles_path) do %>
-        <p class="text-nittai_teal md:text-sm text-green-500 font-bold">&lt; BACK TO ARTICLES</p>
-      <% end %>
       <% if current_user&.admin? %>
         <%= link_to 'Edit', edit_article_path(@article) %>
       <% end %>
@@ -44,7 +41,9 @@
 
   <!--Author-->
   <div class="flex w-full items-center font-sans px-4 py-4">
-    <img class="w-10 h-10 rounded-full mr-4" src="http://i.pravatar.cc/300" alt="Avatar of Author">
+    <% if current_user&.avatar.present? %>
+      <%= image_tag current_user.avatar.url, class: "w-20 h-20 rounded-full mr-4" %>
+    <% end %>
     <div class="flex-1 px-2">
       <p class="text-base font-bold text-base md:text-xl leading-none mb-2">Kazuki Ohta</p>
       <p class="text-gray-600 text-xs md:text-base">Japanese man
@@ -52,7 +51,7 @@
       </p>
     </div>
     <div class="justify-end">
-      <button class="bg-transparent border border-gray-500 hover:border-green-500 text-xs text-gray-500 hover:text-green-500 font-bold py-2 px-4 rounded-full">Read
+      <button class="bg-transparent border border-gray-500 hover:border-green-500 text-xs text-gray-500 hover:text-green-500 font-bold py-2 px-4 rounded-full">Watch
         More
       </button>
     </div>
