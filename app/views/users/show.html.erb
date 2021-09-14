@@ -6,6 +6,10 @@
 
 <h1><%= @user.name %></h1>
 
+<% if @user.avatar.present? %>
+  <%= image_tag @user.avatar.url, class: "w-20 h-20 rounded-full mr-4" %>
+<% end %>
+
 <% if user_signed_in? && @user == current_user %>
  <%= link_to "プロフィール編集", edit_user_path(current_user) %>
 <% end %>
