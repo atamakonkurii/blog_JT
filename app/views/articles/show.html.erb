@@ -16,7 +16,7 @@
       <h1 class="font-bold font-sans break-normal text-gray-900 pt-6 pb-2 text-3xl md:text-4xl"><%= @article.title_ja %></h1>
       <p class="text-sm md:text-base font-normal text-gray-600">
         <time datetime="<%= @article.created_at %>">
-          <%= I18n.l(@article.created_at.time.in_time_zone('Asia/Tokyo'), format: :long) %>
+          <%= I18n.l(@article.created_at.in_time_zone('Asia/Tokyo'), format: :long) %>
         </time>
       </p>
       <p class="text-sm md:text-base font-normal text-gray-600">
