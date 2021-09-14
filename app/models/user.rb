@@ -8,6 +8,8 @@ class User < ApplicationRecord
          :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[facebook google_oauth2]
 
+  mount_uploader :avatar, AvatarUploader
+
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
 

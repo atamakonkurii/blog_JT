@@ -9,5 +9,12 @@
     <%= form.label "Native Language" %>
     <%= form.select :native_language, User.native_languages.keys %>
   </div>
+  <div>
+    <%= form.label "avator" %>
+    <%= form.file_field :avatar %>
+    <% if @user.avatar.present? %>
+      <%= image_tag @user.avatar.url, class: "w-20 h-20 rounded-full mr-4" %>
+    <% end %>
+  </div>
   <div><%= form.submit "保存" %></div>
 <% end %>
