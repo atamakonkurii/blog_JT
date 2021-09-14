@@ -7,9 +7,6 @@
 
     <!--Title-->
     <div class="font-sans">
-      <%= link_to(articles_path) do %>
-        <p class="text-nittai_teal md:text-sm text-green-500 font-bold">&lt; BACK TO ARTICLES</p>
-      <% end %>
       <% if current_user&.admin? %>
         <%= link_to 'Edit', edit_article_path(@article) %>
       <% end %>
@@ -32,7 +29,7 @@
     </div>
 
     <div class="markdown">
-      <%= markdown(@article.content_ja)%>
+      <%= markdown(@article.content_ja) %>
     </div>
 
   </div>
@@ -44,7 +41,9 @@
 
   <!--Author-->
   <div class="flex w-full items-center font-sans px-4 py-4">
-    <img class="w-10 h-10 rounded-full mr-4" src="http://i.pravatar.cc/300" alt="Avatar of Author">
+    <% if @user&.avatar.present? %>
+      <%= image_tag @user.avatar.url, class: "w-20 h-20 rounded-full mr-4" %>
+    <% end %>
     <div class="flex-1 px-2">
       <p class="text-base font-bold text-base md:text-xl leading-none mb-2">Kazuki Ohta</p>
       <p class="text-gray-600 text-xs md:text-base">Japanese man
@@ -52,9 +51,11 @@
       </p>
     </div>
     <div class="justify-end">
-      <button class="bg-transparent border border-gray-500 hover:border-green-500 text-xs text-gray-500 hover:text-green-500 font-bold py-2 px-4 rounded-full">Read
-        More
-      </button>
+      <%= link_to user_path(@user) do %>
+        <button class="bg-transparent border border-gray-500 hover:border-green-500 text-xs text-gray-500 hover:text-green-500 font-bold py-2 px-4 rounded-full">Watch
+          More
+        </button>
+      <% end %>
     </div>
   </div>
   <!--/Author-->
@@ -63,18 +64,18 @@
   <hr class="border-b-2 border-gray-400 mb-8 mx-4">
 
   <!--Next & Prev Links-->
-<!--  <div class="font-sans flex justify-between content-center px-4 pb-12">-->
-<!--    <div class="text-left">-->
-<!--      <span class="text-xs md:text-sm font-normal text-gray-600">&lt; Previous Post</span><br>-->
-<!--      <p><a href="#" class="break-normal text-base md:text-sm text-green-500 font-bold no-underline hover:underline">Blog-->
-<!--        title</a></p>-->
-<!--    </div>-->
-<!--    <div class="text-right">-->
-<!--      <span class="text-xs md:text-sm font-normal text-gray-600">Next Post &gt;</span><br>-->
-<!--      <p><a href="#" class="break-normal text-base md:text-sm text-green-500 font-bold no-underline hover:underline">Blog-->
-<!--        title</a></p>-->
-<!--    </div>-->
-<!--  </div>-->
+  <!--  <div class="font-sans flex justify-between content-center px-4 pb-12">-->
+  <!--    <div class="text-left">-->
+  <!--      <span class="text-xs md:text-sm font-normal text-gray-600">&lt; Previous Post</span><br>-->
+  <!--      <p><a href="#" class="break-normal text-base md:text-sm text-green-500 font-bold no-underline hover:underline">Blog-->
+  <!--        title</a></p>-->
+  <!--    </div>-->
+  <!--    <div class="text-right">-->
+  <!--      <span class="text-xs md:text-sm font-normal text-gray-600">Next Post &gt;</span><br>-->
+  <!--      <p><a href="#" class="break-normal text-base md:text-sm text-green-500 font-bold no-underline hover:underline">Blog-->
+  <!--        title</a></p>-->
+  <!--    </div>-->
+  <!--  </div>-->
 
   <!--/Next & Prev Links-->
 
