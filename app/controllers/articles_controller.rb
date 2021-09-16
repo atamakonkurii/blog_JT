@@ -16,17 +16,22 @@ class ArticlesController < ApplicationController
   def new
     @article = Article.new
     @article.build_place
+    @article.user_id = current_user.id
+    @article.main_language = "japanese"
   end
 
   # GET /articles/1/edit
   def edit
+    @user = @article.user
+    return if @user == current_user
+
+    flash[:notice] = "この記事を編集する権限がありません"
+    redirect_to article_path(@article)
   end
 
   # POST /articles or /articles.json
   def create
     @article = Article.new(article_params)
-    @article.user_id = current_user.id
-    @article.main_language = "japanese"
 
     respond_to do |format|
       if @article.save

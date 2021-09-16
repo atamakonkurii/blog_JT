@@ -1,0 +1,19 @@
+<div class="flex w-full items-center font-sans px-4 py-4">
+  <% if user&.avatar.present? %>
+    <%= image_tag user.avatar.url, class: "w-20 h-20 rounded-full mr-4" %>
+  <% end %>
+  <div class="flex-1 px-2">
+    <p class="text-base font-bold text-base md:text-xl leading-none mb-2"><%= user&.name %></p>
+    <p class="text-gray-600 text-xs md:text-sm">
+      <%= user&.self_introduction %>
+      <!--      <a class="text-nittai_teal no-underline hover:underline" href="https://www.facebook.com/atamakonkurii">facebook.com/atamakonkurii</a>-->
+    </p>
+  </div>
+  <div class="justify-end">
+    <%= link_to user_path(user) do %>
+      <button class="bg-transparent border border-gray-500 hover:border-green-500 text-xs text-gray-500 hover:text-green-500 font-bold py-2 px-4 rounded-full">
+        Detail
+      </button>
+    <% end %>
+  </div>
+</div>
