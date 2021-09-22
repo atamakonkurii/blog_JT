@@ -29,7 +29,11 @@
     </div>
 
     <div class="markdown">
-      <%= markdown(@article.content_ja) %>
+      <% if @article.content_zh_tw.blank? %>
+        <%= markdown(@article.content_ja) %>
+      <% else %>
+        <%= markdown(@article.content_zh_tw) %>
+      <% end %>
     </div>
 
   </div>

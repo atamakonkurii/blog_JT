@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[ index show ]
-  before_action :set_article, only: %i[ show edit update destroy]
+  before_action :set_article, only: %i[ show edit update destroy translate_content]
+  after_action :translate_contents, only: %i[ create update ]
 
   # GET /articles or /articles.json
   def index
@@ -32,8 +33,6 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     @article.user = current_user
     @article.main_language = current_user.native_language
-
-    @article.translate_title_and_content
 
     respond_to do |format|
       if @article.save
@@ -82,7 +81,12 @@ class ArticlesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def article_params
-      params.require(:article).permit(:title_ja, :content_ja, :title_image,
+      params.require(:article).permit(:title_ja, :content_ja, :title_zh_tw, :content_zh_tw, :title_image,
                                       place_attributes: [:id, :country, :prefecture_japan_id, :prefecture_taiwan_id])
+    end
+
+    def translate_contents
+      @article.translate_title_and_content
+      @article.update(article_params)
     end
 end

@@ -17,13 +17,32 @@ class Article < ApplicationRecord
       secret_access_key: Rails.application.credentials.dig(:aws, :secret_access_key)
     )
 
-    target_text = "卵かけご飯"
+    if main_language_japanese?
+      target_text = self.content_ja
+      source_language_code = "ja"
+      target_language_code = "zh-TW"
+    else
+      target_text = self.content_zh_tw
+      source_language_code = "zh-TW"
+      target_language_code = "ja"
+    end
 
     response = translate_client.translate_text({
                                                  text: target_text,
-                                                 source_language_code: "ja",
-                                                 target_language_code: "zh-TW"
+                                                 source_language_code: source_language_code,
+                                                 target_language_code: target_language_code
                                                })
-    puts response.translated_text
+
+    if main_language_japanese?
+      self.content_zh_tw = response.translated_text
+    else
+      self.content_ja = response.translated_text
+    end
+  end
+
+  private
+
+  def main_language_japanese?
+    main_language == "japanese"
   end
 end
