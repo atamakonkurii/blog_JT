@@ -22,7 +22,7 @@ class Article < ApplicationRecord
     response = translate_client.translate_text({
                                                  text: target_text,
                                                  source_language_code: "ja",
-                                                 target_language_code: "zh-TW",
+                                                 target_language_code: "zh-TW"
                                                })
     puts response.translated_text
   end
