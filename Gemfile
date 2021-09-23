@@ -81,3 +81,4 @@ gem 'fog-aws'
 gem 'rmagick'
 
 gem "aws-sdk-s3", require: false
+gem 'aws-sdk'

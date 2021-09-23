@@ -13,7 +13,13 @@
       <% if @article.title_image.present? %>
         <%= image_tag @article.title_image.url %>
       <% end %>
-      <h1 class="font-bold font-sans break-normal text-gray-900 pt-6 pb-2 text-2xl md:text-3xl"><%= @article.title_ja %></h1>
+      <h1 class="font-bold font-sans break-normal text-gray-900 pt-6 pb-2 text-2xl md:text-3xl">
+        <% if @locale == "ja" %>
+          <%= @article.title_ja %>
+        <% else %>
+          <%= @article.title_zh_tw %>
+        <% end %>
+      </h1>
       <p class="text-sm md:text-base font-normal text-gray-600">
         <time datetime="<%= @article.created_at %>">
           <%= I18n.l(@article.created_at.in_time_zone('Asia/Tokyo'), format: :long) %>
@@ -29,9 +35,12 @@
     </div>
 
     <div class="markdown">
-      <%= markdown(@article.content_ja) %>
+      <% if @locale == "ja" %>
+        <%= markdown(@article.content_ja) %>
+      <% else %>
+        <%= markdown(@article.content_zh_tw) %>
+      <% end %>
     </div>
-
   </div>
 
   <br>
