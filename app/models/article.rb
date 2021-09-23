@@ -18,25 +18,35 @@ class Article < ApplicationRecord
     )
 
     if main_language_japanese?
-      target_text = self.content_ja
+      target_title = title_ja
+      target_content = content_ja
       source_language_code = "ja"
       target_language_code = "zh-TW"
     else
-      target_text = self.content_zh_tw
+      target_title = title_zh_tw
+      target_content = content_zh_tw
       source_language_code = "zh-TW"
       target_language_code = "ja"
     end
 
-    response = translate_client.translate_text({
-                                                 text: target_text,
-                                                 source_language_code: source_language_code,
-                                                 target_language_code: target_language_code
-                                               })
+    response_title = translate_client.translate_text({
+                                                       text: target_title,
+                                                       source_language_code: source_language_code,
+                                                       target_language_code: target_language_code
+                                                     })
+
+    response_content = translate_client.translate_text({
+                                                         text: target_content,
+                                                         source_language_code: source_language_code,
+                                                         target_language_code: target_language_code
+                                                       })
 
     if main_language_japanese?
-      self.content_zh_tw = response.translated_text
+      self.title_zh_tw = response_title.translated_text
+      self.content_zh_tw = response_content.translated_text
     else
-      self.content_ja = response.translated_text
+      self.title_ja = response_title.translated_text
+      self.content_ja = response_content.translated_text
     end
   end
 
