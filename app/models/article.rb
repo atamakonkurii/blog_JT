@@ -21,12 +21,14 @@ class Article < ApplicationRecord
 
     if main_language_japanese?
       target_title = title_ja
-      target_content = content_ja.gsub(/^#+ /, replace_tag)
+      # マークダウンの#と画像ファイルを翻訳しないようにする
+      target_content = content_ja.gsub(/(^#+ )|(!\[file\]\().+\)/, replace_tag)
       source_language_code = "ja"
       target_language_code = "zh-TW"
     else
       target_title = title_zh_tw
-      target_content = content_zh_tw
+      # マークダウンの#と画像ファイルを翻訳しないようにする
+      target_content = content_zh_tw.gsub(/(^#+ )|(!\[file\]\().+\)/, replace_tag)
       source_language_code = "zh-TW"
       target_language_code = "ja"
     end
