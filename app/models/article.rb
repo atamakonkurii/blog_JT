@@ -17,14 +17,18 @@ class Article < ApplicationRecord
       secret_access_key: Rails.application.credentials.dig(:aws, :secret_access_key)
     )
 
+    replace_tag = '<p translate=no>\&</p>'
+
     if main_language_japanese?
       target_title = title_ja
-      target_content = content_ja
+      # マークダウンの#と画像ファイルを翻訳しないようにする
+      target_content = content_ja.gsub(/(^#+ )|(!\[file\]\().+\)/, replace_tag)
       source_language_code = "ja"
       target_language_code = "zh-TW"
     else
       target_title = title_zh_tw
-      target_content = content_zh_tw
+      # マークダウンの#と画像ファイルを翻訳しないようにする
+      target_content = content_zh_tw.gsub(/(^#+ )|(!\[file\]\().+\)/, replace_tag)
       source_language_code = "zh-TW"
       target_language_code = "ja"
     end
@@ -41,12 +45,15 @@ class Article < ApplicationRecord
                                                          target_language_code: target_language_code
                                                        })
 
+    # <p translate=no>とそれに紐づく</p>を削除
+    translated_content = response_content.translated_text.gsub(%r{(<p translate=no>|</p>)}, '')
+
     if main_language_japanese?
       self.title_zh_tw = response_title.translated_text
-      self.content_zh_tw = response_content.translated_text
+      self.content_zh_tw = translated_content
     else
       self.title_ja = response_title.translated_text
-      self.content_ja = response_content.translated_text
+      self.content_ja = translated_content
     end
   end
 
