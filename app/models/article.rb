@@ -45,6 +45,7 @@ class Article < ApplicationRecord
                                                          target_language_code: target_language_code
                                                        })
 
+    # <p translate=no>とそれに紐づく</p>を削除
     translated_content = response_content.translated_text.gsub(%r{(<p translate=no>|</p>)}, '')
 
     if main_language_japanese?
