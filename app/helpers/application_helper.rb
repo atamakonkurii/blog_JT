@@ -33,7 +33,7 @@ module ApplicationHelper
         app_id: '4213439218770299'
       },
       twitter: {
-        card: 'summary',
+        card: 'summary_large_image',
         site: '@atamakonkurii'
       }
     }
