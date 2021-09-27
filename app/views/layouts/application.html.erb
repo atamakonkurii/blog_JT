@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>日台one!</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
     <%= csrf_meta_tags %>
@@ -13,6 +12,7 @@
     <% if Rails.env.production? %>
       <%= render 'layouts/google_analytics' %>
     <% end %>
+    <%= display_meta_tags(default_meta_tags) %>
   </head>
 
   <body>
