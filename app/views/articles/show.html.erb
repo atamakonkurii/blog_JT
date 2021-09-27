@@ -1,3 +1,8 @@
+<% if @locale == "ja" %>
+  <% set_meta_tags title: @article.title_ja, description: markdown(@article.content_ja).gsub(/<("[^"]*"|'[^']*'|[^'">])*>/, ""), og: { title: @article.title_ja, image: @article.title_image.url } %>
+<% else %>
+  <% set_meta_tags title: @article.title_zh_tw, description: markdown(@article.content_zh_tw).gsub(/<("[^"]*"|'[^']*'|[^'">])*>/, ""), og: { title: @article.title_zh_tw, image: @article.title_image.url } %>
+<% end %>
 <body class="bg-gray-100 font-sans leading-normal tracking-normal">
 
 <!--Container-->
