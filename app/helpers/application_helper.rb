@@ -13,7 +13,7 @@ module ApplicationHelper
       reverse: true,
       charset: 'utf-8',
       description: '這是一個由日本台灣情侶經營的博客',
-      keywords: 'キーワード',
+      keywords: '台日情侶',
       canonical: request.original_url,
       separator: '|',
       icon: [
