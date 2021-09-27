@@ -29,6 +29,9 @@ module ApplicationHelper
         image: image_url('ogp.png'),
         locale: 'ja_JP'
       },
+      fb: {
+        app_id: '4213439218770299'
+      },
       twitter: {
         card: 'summary',
         site: '@atamakonkurii'
