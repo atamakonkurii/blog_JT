@@ -24,7 +24,7 @@ module ApplicationHelper
         site_name: :site,
         title: :title,
         description: :description,
-        type: 'website',
+        type: 'blog',
         url: request.original_url,
         image: image_url('ogp.png'),
         locale: 'ja_JP'
