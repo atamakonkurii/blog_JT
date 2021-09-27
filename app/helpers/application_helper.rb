@@ -24,7 +24,7 @@ module ApplicationHelper
         site_name: :site,
         title: :title,
         description: :description,
-        type: 'website',
+        type: 'blog',
         url: request.original_url,
         image: image_url('ogp.png'),
         locale: 'ja_JP'
@@ -33,7 +33,7 @@ module ApplicationHelper
         app_id: '4213439218770299'
       },
       twitter: {
-        card: 'summary',
+        card: 'summary_large_image',
         site: '@atamakonkurii'
       }
     }
