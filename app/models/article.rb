@@ -60,9 +60,9 @@ class Article < ApplicationRecord
   def locale_judge_title(language)
     title = case language
             when 'ja'
-                title_ja
+              title_ja
             when 'zh-TW'
-                title_zh_tw
+              title_zh_tw
             end
     # contentがblankなら空白を返す
     return '' if title.blank?
