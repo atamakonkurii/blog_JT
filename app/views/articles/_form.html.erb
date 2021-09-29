@@ -21,7 +21,7 @@
     <div class="field bg-gray-100 border border-gray-300 p-2 mb-4 outline-none">
       <%= form.label "アイキャッチを設定してください" %>
       <%= form.file_field :title_image %>
-<!--      アップロードした画像があれば表示する-->
+      <!--      アップロードした画像があれば表示する-->
       <% if article.title_image.present? %>
         <%= image_tag article.title_image.url %>
       <% end %>
@@ -29,18 +29,24 @@
     <div class="field bg-gray-100 border border-gray-300 p-2 mb-4 outline-none">
       <%= form.fields_for :place do |s| %>
         <%= s.label :国 %>
-        <%= s.select :country, Place.countries.keys, {include_blank: "---"} %>
+        <%= s.select :country, Place.countries.keys, { include_blank: "---" } %>
 
         <%= s.label :日本の場合 %>
-        <%= s.collection_select(:prefecture_japan_id, PrefectureJapan.all, :id, :name, {include_blank: "---"} ) %>
+        <%= s.collection_select(:prefecture_japan_id, PrefectureJapan.all, :id, :name, { include_blank: "---" }) %>
 
         <%= s.label :台湾の場合 %>
-        <%= s.collection_select(:prefecture_taiwan_id, PrefectureTaiwan.all, :id, :name, {include_blank: "---"} ) %>
+        <%= s.collection_select(:prefecture_taiwan_id, PrefectureTaiwan.all, :id, :name, { include_blank: "---" }) %>
       <% end %>
     </div>
 
-    <%= form.text_area :title_ja, class: "title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none", spellcheck: "false", placeholder: "Title", type: "text" %>
-    <%= form.text_area :content_ja, class: "uploadable description bg-gray-100 sec p-3 h-60 border border-gray-300 outline-none", spellcheck: "false", placeholder: "Describe everything about this post here" %>
+    <% if current_user.native_language == "japanese" %>
+      <%= form.text_area :title_ja, class: "title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none", spellcheck: "false", placeholder: "Title", type: "text" %>
+      <%= form.text_area :content_ja, class: "uploadable description bg-gray-100 sec p-3 h-60 border border-gray-300 outline-none", spellcheck: "false", placeholder: "Describe everything about this post here" %>
+    <% else %>
+      <%= form.text_area :title_zh_tw, class: "title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none", spellcheck: "false", placeholder: "Title", type: "text" %>
+      <%= form.text_area :content_zh_tw, class: "uploadable description bg-gray-100 sec p-3 h-60 border border-gray-300 outline-none", spellcheck: "false", placeholder: "Describe everything about this post here" %>
+    <% end %>
+
     <!-- icons -->
     <div class="icons flex text-gray-500 m-2">
       <svg class="mr-2 cursor-pointer hover:text-gray-700 border rounded-full p-1 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
