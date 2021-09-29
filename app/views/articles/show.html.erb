@@ -8,8 +8,9 @@
 
     <!--Title-->
     <div class="font-sans">
-      <% if current_user&.admin? %>
+      <% if current_user&.admin? && current_user == @article.user %>
         <%= link_to 'Edit', edit_article_path(@article) %>
+        <%= link_to 'Destroy', article_path(@article), method: :delete, data: {confirm: "本当に削除しますか？"} %>
       <% end %>
       <% if @article.title_image.present? %>
         <%= image_tag @article.title_image.url %>
