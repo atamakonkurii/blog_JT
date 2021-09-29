@@ -61,7 +61,7 @@ class Article < ApplicationRecord
     title = case language
             when 'ja'
               title_ja
-            when 'zh-TW'
+            else
               title_zh_tw
             end
     # contentがblankなら空白を返す
@@ -74,7 +74,7 @@ class Article < ApplicationRecord
     content = case language
               when 'ja'
                 content_ja
-              when 'zh-TW'
+              else
                 content_zh_tw
               end
     # contentがblankなら空白を返す
