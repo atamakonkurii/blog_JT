@@ -1,10 +1,6 @@
-<% if @locale == "ja" %>
-  <% set_meta_tags title: @article.title_ja, description: markdown(@article.content_ja).gsub(/<("[^"]*"|'[^']*'|[^'">])*>/, ""), og: { title: @article.title_ja, image: @article.title_image.url } %>
-<% else %>
-  <% set_meta_tags title: @article.title_zh_tw, description: markdown(@article.content_zh_tw).gsub(/<("[^"]*"|'[^']*'|[^'">])*>/, ""), og: { title: @article.title_zh_tw, image: @article.title_image.url } %>
-<% end %>
-<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+<% set_meta_tags title: @article.locale_judge_title(@locale), description: markdown(@article.locale_judge_content(@locale)).gsub(/<("[^"]*"|'[^']*'|[^'">])*>/, ""), og: { title: @article.locale_judge_title(@locale), image: @article.title_image.url } %>
 
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
 <!--Container-->
 <div class="container w-full md:max-w-3xl mx-auto pt-8">
 
@@ -19,11 +15,7 @@
         <%= image_tag @article.title_image.url %>
       <% end %>
       <h1 class="font-bold font-sans break-normal text-gray-900 pt-6 pb-2 text-2xl md:text-3xl">
-        <% if @locale == "ja" %>
-          <%= @article.title_ja %>
-        <% else %>
-          <%= @article.title_zh_tw %>
-        <% end %>
+        <%= @article.locale_judge_title(@locale) %>
       </h1>
       <p class="text-sm md:text-base font-normal text-gray-600">
         <time datetime="<%= @article.created_at %>">
@@ -40,11 +32,7 @@
     </div>
 
     <div class="markdown">
-      <% if @locale == "ja" %>
-        <%= markdown(@article.content_ja) %>
-      <% else %>
-        <%= markdown(@article.content_zh_tw) %>
-      <% end %>
+      <%= markdown(@article.locale_judge_content(@locale)) %>
     </div>
   </div>
 

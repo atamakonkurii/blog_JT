@@ -57,6 +57,32 @@ class Article < ApplicationRecord
     end
   end
 
+  def locale_judge_title(language)
+    title = case language
+            when 'ja'
+              title_ja
+            when 'zh-TW'
+              title_zh_tw
+            end
+    # contentがblankなら空白を返す
+    return '' if title.blank?
+
+    title
+  end
+
+  def locale_judge_content(language)
+    content = case language
+              when 'ja'
+                content_ja
+              when 'zh-TW'
+                content_zh_tw
+              end
+    # contentがblankなら空白を返す
+    return '' if content.blank?
+
+    content
+  end
+
   private
 
   def main_language_japanese?
