@@ -60,6 +60,12 @@ class ArticlesController < ApplicationController
 
   # DELETE /articles/1 or /articles/1.json
   def destroy
+    @user = @article.user
+    return if @user == current_user
+
+    flash[:notice] = "この記事を削除する権限がありません"
+    redirect_to article_path(@article)
+
     @article.destroy
     respond_to do |format|
       format.html { redirect_to articles_url, notice: "Article was successfully destroyed." }
