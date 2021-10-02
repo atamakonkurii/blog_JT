@@ -83,6 +83,16 @@ class Article < ApplicationRecord
     content
   end
 
+  def display_translate_caution(language)
+    if language == 'ja' && main_language == "taiwanese"
+      "※この記事は機械翻訳された文章です"
+    elsif language == 'zh-TW' && main_language == "japanese"
+      "※這篇文章是機器翻譯的句子"
+    else
+      ""
+    end
+  end
+
   private
 
   def main_language_japanese?
