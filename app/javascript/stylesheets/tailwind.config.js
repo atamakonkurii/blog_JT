@@ -15,6 +15,9 @@ module.exports = {
         'nittai_teal': '#00ADB5',
         'nittai_teal_strong' : '#014c4e',
         'nittai_whitegrey': '#EEEEEE',
+      },
+      spacing: {
+        '9/16': '56.25%'
       }
     },
   },
