@@ -78,3 +78,11 @@
 .markdown pre {
     @apply mx-2;
 }
+
+.youtube {
+    @apply relative overflow-hidden pb-9/16;
+}
+
+.youtube iframe {
+    @apply absolute h-full w-full object-cover;
+}
