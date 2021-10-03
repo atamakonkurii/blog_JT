@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_16_130103) do
+ActiveRecord::Schema.define(version: 2021_10_03_225546) do
 
   create_table "articles", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title_ja"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2021_09_16_130103) do
     t.integer "main_language", null: false
     t.integer "user_id", null: false
     t.string "title_image"
+    t.boolean "visible_list", default: true, null: false
   end
 
   create_table "attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
