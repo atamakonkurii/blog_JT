@@ -28,3 +28,6 @@ Rails 6.1.4
 * Deployment instructions
 
 * ...
+
+* ターミナルの操作
+https://github.com/atamakonkurii/blog_JT/issues/104
