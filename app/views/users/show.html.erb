@@ -1,44 +1,30 @@
- <% if user_signed_in? && @user == current_user %>
-    <%= link_to "プロフィール編集", edit_user_path(current_user) %>
-  <% end %>
+<% if user_signed_in? && @user == current_user %>
+  <%= link_to "プロフィール編集", edit_user_path(current_user) %>
+<% end %>
 
 <div class="pt-20 pb-10">
-<div class="container mx-auto shadow-lg rounded-2xl w-full bg-white dark:bg-gray-800">
-  <div class="flex flex-col items-center justify-center p-4 -mt-16">
-    <a href="#" class="block relative">
-      <%= image_tag @user.avatar.url, class: "mx-auto object-cover rounded-full h-16 w-16  border-2 border-white dark:border-gray-800" if @user.avatar.present? %>
-    </a>
-    <p class="text-gray-800 dark:text-white text-xl font-medium mt-2">
-      <%= @user.name %>
-    </p>
-    <p class="text-gray-400 text-xs mb-4">
-      <%= @user.native_language %>
-    </p>
-    <p class="text-xs p-2 bg-nittai_teal text-white px-4 rounded-full">
-      <%= @user.self_introduction %>
-    </p>
-    <div class="rounded-lg p-2 w-60 mt-4">
-      <div class="flex items-center justify-between text-sm text-gray-600 dark:text-gray-200">
-        <p class="flex flex-col">
-          Articles
-          <span class="text-black dark:text-white font-bold">
-                        34
-                    </span>
-        </p>
-        <p class="flex flex-col">
-          Followers
-          <span class="text-black dark:text-white font-bold">
-                        455
-                    </span>
-        </p>
-        <p class="flex flex-col">
-          Rating
-          <span class="text-black dark:text-white font-bold">
-                        9.3
-                    </span>
-        </p>
-      </div>
+  <div class="container mx-auto shadow-lg rounded-2xl w-full bg-white dark:bg-gray-800">
+    <div class="flex flex-col items-center justify-center p-4 -mt-16">
+      <a href="#" class="block relative">
+        <%= image_tag @user.avatar.url, class: "mx-auto object-cover rounded-full h-16 w-16  border-2 border-white dark:border-gray-800" if @user.avatar.present? %>
+      </a>
+      <p class="text-gray-800 dark:text-white text-xl font-medium mt-2">
+        <%= @user&.name %>
+      </p>
+      <p class="text-gray-400 text-xs mb-4">
+        <%= @user&.native_language %>
+      </p>
+      <p class="text-xs p-2 bg-nittai_teal text-white px-4 rounded-full">
+        <%= @user&.self_introduction %>
+      </p>
+      <p class="pt-2 text-sm text-gray-600 dark:text-gray-200">
+        Articles
+      </p>
+      <p class="text-black dark:text-white font-bold">
+        <%= @user&.articles&.size %>
+      </p>
     </div>
   </div>
 </div>
-</div>
+
+<%= render 'user_index', articles: @articles %>
