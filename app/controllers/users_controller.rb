@@ -2,7 +2,9 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
   before_action :authenticate_user!, only: [:my_page, :edit, :update]
 
-  def show; end
+  def show
+    @articles = @user.articles.visible.recent
+  end
 
   def edit
     redirect_to user_path(@user) unless @user == current_user

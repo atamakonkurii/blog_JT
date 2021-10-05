@@ -10,6 +10,9 @@ class Article < ApplicationRecord
 
   mount_uploader :title_image, TitleImageUploader
 
+  scope :visible, -> { where(visible_list: true) }
+  scope :recent, ->(limit=99) { order(id: "DESC").limit(limit) }
+
   def translate_title_and_content
     translate_client = Aws::Translate::Client.new(
       region: "ap-northeast-1",
