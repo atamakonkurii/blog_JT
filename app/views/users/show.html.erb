@@ -21,7 +21,7 @@
         Articles
       </p>
       <p class="text-black dark:text-white font-bold">
-        <%= @user&.articles&.size %>
+        <%= @user&.articles&.visible&.size %>
       </p>
     </div>
   </div>
