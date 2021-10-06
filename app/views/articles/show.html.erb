@@ -1,3 +1,5 @@
+<%= javascript_pack_tag 'article/markdown_youtube' %>
+
 <% set_meta_tags title: @article.locale_judge_title(@locale), description: markdown(@article.locale_judge_content(@locale)).gsub(/<("[^"]*"|'[^']*'|[^'">])*>/, ""), og: { title: @article.locale_judge_title(@locale), image: @article.title_image.url } %>
 
 <body class="bg-gray-100 font-sans leading-normal tracking-normal">
@@ -35,7 +37,7 @@
       </p>
     </div>
 
-    <div class="markdown">
+    <div id="youtube" class="markdown">
       <%= markdown(@article.locale_judge_content(@locale)) %>
     </div>
   </div>
