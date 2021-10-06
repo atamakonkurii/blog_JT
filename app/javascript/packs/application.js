@@ -11,7 +11,6 @@ window.$ = window.jQuery = require('jquery');
 import "./inline-attachment/inline-attachment"
 import "./inline-attachment/jquery.inline-attachment"
 import "./article/article"
-import "./article/markdown_youtube"
 
 import "../css/tailwindcss.css";
 import "../stylesheets/application"
