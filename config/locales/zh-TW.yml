@@ -151,6 +151,11 @@ zh-TW:
       create: 新增
       submit: 儲存
       update: 更新
+      draft: 草稿
+    message:
+      create: 文章已新增
+      update: 文章已更新
+      draft: 儲存草稿
   number:
     currency:
       format:

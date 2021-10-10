@@ -7,6 +7,7 @@ class Article < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   enum main_language: { japanese: 0, taiwanese: 1, english: 2 }
+  enum status: { published: 0, draft: 1 }
 
   mount_uploader :title_image, TitleImageUploader
 
