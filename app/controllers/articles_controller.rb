@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[ index show ]
   before_action :set_article, only: %i[ show edit update destroy translate_content]
-  after_action :translate_contents, only: %i[ create update ]
+  after_action :translate_contents, only: %i[ create update ], if: -> { @article.published? }
 
   # GET /articles or /articles.json
   def index
@@ -11,6 +11,11 @@ class ArticlesController < ApplicationController
   # GET /articles/1 or /articles/1.json
   def show
     @user = @article.user
+
+    if @article.draft? && current_user != @user
+      flash[:notice] = "この記事を閲覧する権限がありません"
+      redirect_to user_path(@user)
+    end
   end
 
   # GET /articles/new
@@ -34,9 +39,17 @@ class ArticlesController < ApplicationController
     @article.user = current_user
     @article.main_language = current_user.native_language
 
+    if params[:publish]
+      @article.status = "published"
+      notice = t('helpers.message.create')
+    elsif params[:draft]
+      @article.status = "draft"
+      notice = t('helpers.message.draft')
+    end
+
     respond_to do |format|
       if @article.save
-        format.html { redirect_to @article, notice: "Article was successfully created." }
+        format.html { redirect_to @article, notice: notice }
         format.json { render :show, status: :created, location: @article }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -47,9 +60,17 @@ class ArticlesController < ApplicationController
 
   # PATCH/PUT /articles/1 or /articles/1.json
   def update
+    if params[:publish]
+      @article.status = "published"
+      notice = t('helpers.message.update')
+    elsif params[:draft]
+      @article.status = "draft"
+      notice = t('helpers.message.draft')
+    end
+
     respond_to do |format|
       if @article.update(article_params)
-        format.html { redirect_to @article, notice: "Article was successfully updated." }
+        format.html { redirect_to @article, notice: notice }
         format.json { render :show, status: :ok, location: @article }
       else
         format.html { render :edit, status: :unprocessable_entity }

@@ -151,6 +151,11 @@ en:
       create: Create
       submit: Save
       update: Update
+      draft: Draft
+    message:
+      create: Article was successfully created.
+      update: Article was successfully updated.
+      draft: Article was successfully draft.
   number:
     currency:
       format:

@@ -151,6 +151,11 @@ ja:
       create: 登録
       submit: 保存
       update: 更新
+      draft: 下書き
+    message:
+      create: 記事を作成しました
+      update: 記事を更新しました
+      draft: 下書きを保存しました
   number:
     currency:
       format:

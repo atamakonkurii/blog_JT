@@ -65,8 +65,8 @@
     </div>
     <!-- buttons -->
     <div class="buttons flex">
-      <div class="btn border border-gray-300 p-1 px-4 font-semibold cursor-pointer text-gray-500 ml-auto">Cancel</div>
-      <div class="btn border border-nittai_teal p-1 px-4 font-semibold cursor-pointer text-white ml-2 bg-nittai_teal"><%= form.submit :class => "font-semibold text-white bg-nittai_teal" %></div>
+      <div class="btn border border-gray-300 p-1 px-4 font-semibold cursor-pointer text-gray-500 ml-auto"><%= form.submit "#{t('helpers.submit.draft')}", :name=> 'draft', :class => "font-semibold bg-transparent" %></div>
+      <div class="btn border border-nittai_teal p-1 px-4 font-semibold cursor-pointer text-white ml-2 bg-nittai_teal"><%= form.submit :name=> 'publish', :class => "font-semibold text-white bg-nittai_teal" %></div>
     </div>
 <% end %>
 </div>

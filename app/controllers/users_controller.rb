@@ -3,7 +3,11 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:my_page, :edit, :update]
 
   def show
-    @articles = @user.articles.visible.recent
+    @articles = if current_user == @user
+                  @user.articles.visible.recent
+                else
+                  @user.articles.published.visible.recent
+                end
   end
 
   def edit
