@@ -5,10 +5,34 @@
     <% end %>
   <% end %>
   <div class="flex-1 px-2">
+    <span class="flex pb-1">
     <%= link_to user_path(user) do %>
-      <p class="text-base font-bold text-base md:text-xl leading-none mb-2"><%= user&.name %></p>
+      <p class="text-base font-bold md:text-xl"><%= user&.name %></p>
     <% end %>
-    <p class="text-gray-600 text-xs md:text-sm">
+      <div class = "pl-2">
+        <% if user.facebook.present? %>
+          <a href=<%= user.facebook %> class="ml-3 text-gray-500">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+        <% end %>
+        <% if user.twitter.present? %>
+          <a href=<%= user.twitter %> class="ml-3 text-gray-500">
+            <i class="fab fa-twitter"></i>
+          </a>
+        <% end %>
+        <% if user.instagram.present? %>
+          <a href=<%= user.instagram %> class="ml-3 text-gray-500">
+            <i class="fab fa-instagram"></i>
+          </a>
+        <% end %>
+        <% if user.amazon.present? %>
+          <a href=<%= user.amazon %> class="ml-3 text-gray-500">
+              <i class="fab fa-amazon"></i>
+          </a>
+        <% end %>
+      </div>
+     </span>
+    <p class="text-gray-600 text-xs md:text-sm leading-none">
       <%= user&.self_introduction %>
     </p>
   </div>
