@@ -12,5 +12,7 @@ import "./inline-attachment/inline-attachment"
 import "./inline-attachment/jquery.inline-attachment"
 import "./article/article"
 
+import '@fortawesome/fontawesome-free/js/all'
+
 import "../css/tailwindcss.css";
 import "../stylesheets/application"
