@@ -28,11 +28,19 @@
                     <% elsif article.place&.country == "taiwan" %>
                       <%= "台灣 #{article.place&.prefecture_taiwan&.name}" %>
                     <% end %>
-                    <time datetime="<%= article.created_at %>">
-                      <%= time_ago_in_words(article.created_at) %>前
-                    </time>
                   </p>
                 </div>
+                <%= link_to(article.user) do %>
+                  <span class="flex pt-1">
+                    <%= image_tag article.user.avatar.url, class: "rounded-full h-10 w-10 border-2 border-white dark:border-gray-800" if article&.user&.avatar&.present? %>
+                    <div class="text-xs md:text-sm font-normal text-gray-400 pl-1 my-auto">
+                      <p><%= article.user&.name %></p>
+                      <time datetime="<%= article.created_at %>">
+                        <%= time_ago_in_words(article.created_at) %>前
+                      </time>
+                    </div>
+                  </span>
+                <% end %>
               </div>
             </div>
           </div>
