@@ -33,6 +33,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.fetch(:user, {}).permit(:name, :native_language, :avatar, :self_introduction)
+    params.fetch(:user, {}).permit(:name, :native_language, :avatar, :self_introduction, :facebook, :twitter,
+                                   :instagram, :amazon)
   end
 end
