@@ -14,7 +14,7 @@
                 <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">TITLE</h2>
                 <h1 class="title-font text-lg font-medium text-gray-900 mb-3"><%= article.locale_judge_title(@locale) %></h1>
                 <% if article.draft? %>
-                  <div><%= t('helpers.submit.draft') %></div>
+                  <p class="text-red-700 font-semibold"><%= "【#{t('helpers.submit.draft')}】" %></p>
                   <% end %>
                 <div class="markdown">
                   <%= markdown(article.locale_judge_content(@locale)).gsub(/<("[^"]*"|'[^']*'|[^'">])*>/, "").slice(0, 50) %>

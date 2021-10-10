@@ -11,11 +11,10 @@ class ArticlesController < ApplicationController
   # GET /articles/1 or /articles/1.json
   def show
     @user = @article.user
+    return if browsing_authority?
 
-    if @article.draft? && current_user != @user
-      flash[:notice] = "この記事を閲覧する権限がありません"
-      redirect_to user_path(@user)
-    end
+    flash[:notice] = "この記事を閲覧する権限がありません"
+    redirect_to user_path(@user)
   end
 
   # GET /articles/new
@@ -82,16 +81,16 @@ class ArticlesController < ApplicationController
   # DELETE /articles/1 or /articles/1.json
   def destroy
     @user = @article.user
-   if @user != current_user
-     flash[:notice] = "この記事を削除する権限がありません"
-     redirect_to article_path(@article)
-   else
-     @article.destroy
-     respond_to do |format|
-       format.html { redirect_to articles_url, notice: "Article was successfully destroyed." }
-       format.json { head :no_content_ja }
-     end
-   end
+    if @user != current_user
+      flash[:notice] = "この記事を削除する権限がありません"
+      redirect_to article_path(@article)
+    else
+      @article.destroy
+      respond_to do |format|
+        format.html { redirect_to articles_url, notice: "Article was successfully destroyed." }
+        format.json { head :no_content_ja }
+      end
+    end
   end
 
   def attach
@@ -100,19 +99,24 @@ class ArticlesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_article
-      @article = Article.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def article_params
-      params.require(:article).permit(:title_ja, :content_ja, :title_zh_tw, :content_zh_tw, :title_image,
-                                      place_attributes: [:id, :country, :prefecture_japan_id, :prefecture_taiwan_id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_article
+    @article = Article.find(params[:id])
+  end
 
-    def translate_contents
-      @article.translate_title_and_content
-      @article.update(article_params)
-    end
+  # Only allow a list of trusted parameters through.
+  def article_params
+    params.require(:article).permit(:title_ja, :content_ja, :title_zh_tw, :content_zh_tw, :title_image,
+                                    place_attributes: [:id, :country, :prefecture_japan_id, :prefecture_taiwan_id])
+  end
+
+  def translate_contents
+    @article.translate_title_and_content
+    @article.update(article_params)
+  end
+
+  def browsing_authority?
+    @article.published? || @article.draft? && current_user == @user
+  end
 end
