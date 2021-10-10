@@ -1,24 +1,46 @@
-<h1>プロフィール編集</h1>
+<div class="pt-20 pb-10">
+  <div class="container mx-auto shadow-lg rounded-2xl w-full bg-white dark:bg-gray-800">
+    <div class="flex flex-col items-center justify-center p-4 -mt-16">
+      <%= form_with model: @user do |form| %>
+        <div>
+          <% if @user.avatar.present? %>
+            <%= image_tag @user.avatar.url, class: "w-20 h-20 rounded-full mr-4 mb-2" %>
+          <% end %>
+          <%= form.label "ユーザー画像", :class => "block text-gray-600 text-sm font-semibold mb-2" %>
+          <%= form.file_field :avatar, :class => "mb-4 bg-gray-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+        </div>
+        <div>
+          <%= form.label "表示名", :class => "block text-gray-600 text-sm font-semibold mb-2" %>
+          <%= form.text_field :name, :class => "mb-4 bg-gray-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+        </div>
+        <div>
+          <%= form.label "自己紹介", :class => "block text-gray-600 text-sm font-semibold mb-2" %>
+          <%= form.text_field :self_introduction, :class => "mb-4 bg-gray-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+        </div>
+        <div>
+          <%= form.label "得意な言語(記事を書く言語)", :class => "block text-gray-600 text-sm font-semibold mb-2" %>
+          <%= form.select :native_language, User.native_languages.keys, { class: 'mb-4 bg-gray-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' } %>
+        </div>
+        <div class="pt-5">
+          <%= form.label "facebook", :class => "block text-gray-600 text-sm font-semibold mb-2" %>
+          <%= form.text_field :facebook, :class => "mb-4 bg-gray-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", :placeholder => "https://www.facebook.com//〇〇" %>
+        </div>
+        <div>
+          <%= form.label "twitter", :class => "block text-gray-600 text-sm font-semibold mb-2" %>
+          <%= form.text_field :twitter, :class => "mb-4 bg-gray-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", :placeholder => "https://twitter.com/〇〇" %>
+        </div>
+        <div>
+          <%= form.label "instagram", :class => "block text-gray-600 text-sm font-semibold mb-2" %>
+          <%= form.text_field :instagram, :class => "mb-4 bg-gray-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", :placeholder => "https://www.instagram.com/〇〇" %>
+        </div>
+        <div>
+          <%= form.label "amazonほしい物リスト", :class => "block text-gray-600 text-sm font-semibold mb-2" %>
+          <%= form.text_field :amazon, :class => "mb-4 bg-gray-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", :placeholder => "https://twitter.com/〇〇" %>
+        </div>
+        <div><%= form.submit "保存", class: "mt-2 bg-nittai_teal hover:bg-nittai_teal_strong text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %></div>
+      <% end %>
+    </div>
+  </div>
+</div>
 
-<%= form_with model: @user do |form| %>
-  <div>
-    <%= form.label "表示名設定して下さい" %>
-    <%= form.text_field :name %>
-  </div>
-  <div>
-    <%= form.label "自己紹介" %>
-    <%= form.text_field :self_introduction %>
-  </div>
-  <div>
-    <%= form.label "Native Language" %>
-    <%= form.select :native_language, User.native_languages.keys %>
-  </div>
-  <div>
-    <%= form.label "avator" %>
-    <%= form.file_field :avatar %>
-    <% if @user.avatar.present? %>
-      <%= image_tag @user.avatar.url, class: "w-20 h-20 rounded-full mr-4" %>
-    <% end %>
-  </div>
-  <div><%= form.submit "保存" %></div>
-<% end %>
+

@@ -16,18 +16,26 @@
         <%= @user&.native_language %>
       </p>
       <span class="flex mb-4 justify-center">
-      <a href="https://www.facebook.com/atamakonkurii" class="text-gray-500">
-        <i class="fab fa-facebook-f fa-lg"></i>
-      </a>
-      <a href="https://twitter.com/atamakonkurii" class="ml-3 text-gray-500">
-        <i class="fab fa-twitter fa-lg"></i>
-      </a>
-      <a href="https://www.instagram.com/atamakonkurii" class="ml-3 text-gray-500">
-        <i class="fab fa-instagram fa-lg"></i>
-      </a>
-      <a href="https://www.youtube.com/channel/UC2JHTgLF0wHhkKIPS9sTl0w" class="ml-3 text-gray-500">
-          <i class="fab fa-amazon fa-lg"></i>
-      </a>
+      <% if @user.facebook.present? %>
+        <a href=<%= @user.facebook %> class="text-gray-500">
+          <i class="fab fa-facebook-f fa-lg"></i>
+        </a>
+      <% end %>
+      <% if @user.twitter.present? %>
+        <a href=<%= @user.twitter %> class="ml-3 text-gray-500">
+          <i class="fab fa-twitter fa-lg"></i>
+        </a>
+      <% end %>
+      <% if @user.instagram.present? %>
+        <a href=<%= @user.instagram %> class="ml-3 text-gray-500">
+          <i class="fab fa-instagram fa-lg"></i>
+        </a>
+      <% end %>
+      <% if @user.amazon.present? %>
+        <a href=<%= @user.amazon %> class="ml-3 text-gray-500">
+            <i class="fab fa-amazon fa-lg"></i>
+        </a>
+      <% end %>
     </span>
       <p class="text-xs p-2 bg-nittai_teal text-white px-4 rounded-full">
         <%= @user&.self_introduction %>
