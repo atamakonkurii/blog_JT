@@ -3,82 +3,59 @@
 <% set_meta_tags title: @article.locale_judge_title(@locale), description: markdown(@article.locale_judge_content(@locale)).gsub(/<("[^"]*"|'[^']*'|[^'">])*>/, ""), og: { title: @article.locale_judge_title(@locale), image: @article.title_image.url } %>
 
 <body class="bg-gray-100 font-sans leading-normal tracking-normal">
-<!--Container-->
-<div class="container w-full md:max-w-3xl mx-auto pt-8">
-
-  <div class="w-full px-4 md:px-6 text-xl text-gray-800 leading-normal" style="font-family:Georgia,serif;">
-
-    <!--Title-->
-    <div class="font-sans">
-      <% if current_user&.admin? && current_user == @article.user %>
-        <%= link_to 'Edit', edit_article_path(@article) %>
-        <%= link_to 'Destroy', article_path(@article), method: :delete, data: { confirm: "本当に削除しますか？" } %>
-      <% end %>
-      <% if @article.draft? %>
-        <p class="text-2xl md:text-3xl text-red-700 font-semibold pt-3"><%= "【#{t('helpers.submit.draft')}】" %></p>
-      <% end %>
-      <% if @article.title_image.present? %>
-        <%= image_tag @article.title_image.url %>
-      <% end %>
-      <h1 class="font-bold font-sans break-normal text-gray-900 pt-6 pb-2 text-2xl md:text-3xl">
-        <%= @article.locale_judge_title(@locale) %>
-      </h1>
-      <p class="text-lg md:text-xl font-normal text-red-700">
-        <%= @article.display_translate_caution(@locale) %>
-      </p>
-      <p class="text-sm md:text-base font-normal text-gray-600">
-        <% if @article.place&.country == "japan" %>
-          <%= "日本 #{@article.place&.prefecture_japan&.name}" %>
-        <% elsif @article.place&.country == "taiwan" %>
-          <%= "台灣 #{@article.place&.prefecture_taiwan&.name}" %>
+  <div class="container w-full md:max-w-3xl mx-auto pt-8">
+    <div class="w-full px-4 md:px-6 text-xl text-gray-800 leading-normal" style="font-family:Georgia,serif;">
+      <div class="font-sans">
+        <% if current_user&.admin? && current_user == @article.user %>
+          <%= link_to 'Edit', edit_article_path(@article) %>
+          <%= link_to 'Destroy', article_path(@article), method: :delete, data: { confirm: "本当に削除しますか？" } %>
         <% end %>
-      </p>
-      <%= link_to(@article.user) do %>
-        <span class="flex pt-1">
-          <%= image_tag @article.user.avatar.url, class: "rounded-full h-10 w-10 border-2 border-white dark:border-gray-800" if @article&.user&.avatar&.present? %>
-          <div class="text-xs md:text-sm font-normal text-gray-400 pl-1 my-auto">
-            <p><%= @article.user&.name %></p>
-            <time datetime="<%= @article.created_at %>">
-              <%= I18n.l(@article.created_at.in_time_zone('Asia/Tokyo'), format: :long) %>
-            </time>
-          </div>
-        </span>
-      <% end %>
-    </div>
+        <% if @article.draft? %>
+          <p class="text-2xl md:text-3xl text-red-700 font-semibold pt-3"><%= "【#{t('helpers.submit.draft')}】" %></p>
+        <% end %>
+        <% if @article.title_image.present? %>
+          <%= image_tag @article.title_image.url %>
+        <% end %>
+        <h1 class="font-bold font-sans break-normal text-gray-900 pt-6 pb-2 text-2xl md:text-3xl">
+          <%= @article.locale_judge_title(@locale) %>
+        </h1>
+        <p class="text-lg md:text-xl font-normal text-red-700">
+          <%= @article.display_translate_caution(@locale) %>
+        </p>
+        <p class="text-sm md:text-base font-normal text-gray-600">
+          <% if @article.place&.country == "japan" %>
+            <%= "日本 #{@article.place&.prefecture_japan&.name}" %>
+          <% elsif @article.place&.country == "taiwan" %>
+            <%= "台灣 #{@article.place&.prefecture_taiwan&.name}" %>
+          <% end %>
+        </p>
+          <span class="flex pt-1">
+            <%= link_to(@article.user) do %>
+              <%= image_tag @article.user.avatar.url, class: "rounded-full h-10 w-10 border-2 border-white dark:border-gray-800" if @article&.user&.avatar&.present? %>
+            <% end %>
+            <div class="text-xs md:text-sm font-normal text-gray-400 pl-1 my-auto">
+              <%= link_to(@article.user) do %>
+                <p><%= @article.user&.name %></p>
+              <% end %>
+              <time datetime="<%= @article.created_at %>">
+                <%= I18n.l(@article.created_at.in_time_zone('Asia/Tokyo'), format: :long) %>
+              </time>
+            </div>
+            <div class="ml-auto mr-4 my-auto text-gray-400">
+              <a href="https://www.facebook.com/share.php?u=<%= request.url %>" rel="nofollow" target="_blank"><i class="fab fa-facebook"></i></a>
+              <a href="https://twitter.com/share?url=<%= request.url %>"><i class="fab fa-twitter ml-2"></i></a>
+              <a href="https://line.me/R/msg/text/?<%= request.url %>"><i class="fab fa-line ml-2"></i></a>
+            </div>
+          </span>
+      </div>
 
-    <div id="youtube" class="markdown">
-      <%= markdown(@article.locale_judge_content(@locale)) %>
+      <div id="youtube" class="markdown">
+        <%= markdown(@article.locale_judge_content(@locale)) %>
+      </div>
     </div>
+    <br>
+    <hr class="border-b-2 border-gray-400 mb-1 mx-4">
+    <%= render 'author', user: @user %>
+    <hr class="border-b-2 border-gray-400 mb-8 mx-4">
   </div>
-
-  <br>
-
-  <!--Divider-->
-  <hr class="border-b-2 border-gray-400 mb-1 mx-4">
-
-  <!--Author-->
-  <%= render 'author', user: @user %>
-  <!--/Author-->
-
-  <!--Divider-->
-  <hr class="border-b-2 border-gray-400 mb-8 mx-4">
-
-  <!--Next & Prev Links-->
-  <!--  <div class="font-sans flex justify-between content-center px-4 pb-12">-->
-  <!--    <div class="text-left">-->
-  <!--      <span class="text-xs md:text-sm font-normal text-gray-600">&lt; Previous Post</span><br>-->
-  <!--      <p><a href="#" class="break-normal text-base md:text-sm text-green-500 font-bold no-underline hover:underline">Blog-->
-  <!--        title</a></p>-->
-  <!--    </div>-->
-  <!--    <div class="text-right">-->
-  <!--      <span class="text-xs md:text-sm font-normal text-gray-600">Next Post &gt;</span><br>-->
-  <!--      <p><a href="#" class="break-normal text-base md:text-sm text-green-500 font-bold no-underline hover:underline">Blog-->
-  <!--        title</a></p>-->
-  <!--    </div>-->
-  <!--  </div>-->
-
-  <!--/Next & Prev Links-->
-
-</div>
-<!--/container-->
 </body>
