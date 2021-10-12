@@ -84,3 +84,6 @@ gem "aws-sdk-s3", require: false
 gem 'aws-sdk'
 
 gem 'meta-tags'
+
+gem 'acts-as-taggable-on', '~> 8.0'
+
