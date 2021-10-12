@@ -1,5 +1,15 @@
 <section class="text-gray-600 body-font">
   <div class="container px-5 py-12 mx-auto">
+    <% if @tags.present? %>
+      <h3 class="flex justify-center items-center font-bold text-xs">TAGS</h3>
+      <div class="flex justify-center items-center mb-4">
+        <% @tags.each do |tag| %>
+          <span class="m-1 bg-gray-200 hover:bg-gray-300 rounded-full px-2 font-bold text-sm leading-loose cursor-pointer">
+            #<%= link_to "#{tag.name}(#{tag.taggings_count})", articles_path(tag_name: tag.name), method: :get %>
+          </span>
+        <% end %>
+      </div>
+    <% end %>
     <div class="flex flex-wrap -m-4">
       <% @articles.published.visible.order(id: "DESC").each do |article| %>
         <%= link_to(article) do %>
@@ -29,7 +39,7 @@
                 </div>
                 <%= link_to(article.user) do %>
                   <span class="flex pt-1">
-                    <%= image_tag article.user.avatar.url, class: "rounded-full h-10 w-10 border-2 border-white dark:border-gray-800" if article&.user&.avatar&.present? %>
+                    <%= image_tag article.user.avatar.url, class: "rounded-full h-10 w-10 border-2 border-white dark:border-gray-800" if article.user&.avatar&.present? %>
                     <div class="text-xs md:text-sm font-normal text-gray-400 pl-1 my-auto">
                       <p><%= article.user&.name %></p>
                       <time datetime="<%= article.created_at %>">

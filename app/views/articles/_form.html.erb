@@ -40,10 +40,13 @@
         <%= s.collection_select(:prefecture_taiwan_id, PrefectureTaiwan.all, :id, :name, { include_blank: "---" }) %>
       <% end %>
     </div>
+    <div class="field bg-gray-100 border border-gray-300 p-2 mb-4 outline-none">
+      <%= form.text_field :tag_list, value: article.tag_list.join(','), class: "bg-transparent w-full", placeholder: "tag1, tag2, tag3..., max tag6" %>
+    </div>
 
     <% if current_user.native_language == "japanese" %>
-      <%= form.text_area :title_ja, class: "title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none", spellcheck: "false", placeholder: "Title", type: "text" %>
-      <%= form.text_area :content_ja, id: "text-editor", class: "uploadable description bg-gray-100 sec p-3 h-60 border border-gray-300 outline-none", spellcheck: "false", placeholder: "Describe everything about this post here" %>
+      <%= form.text_area :title_ja, class: "title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none", spellcheck: "false", placeholder: "タイトル", type: "text" %>
+      <%= form.text_area :content_ja, id: "text-editor", class: "uploadable description bg-gray-100 sec p-3 h-60 border border-gray-300 outline-none", spellcheck: "false", placeholder: "記事本文" %>
     <% else %>
       <%= form.text_area :title_zh_tw, class: "title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none", spellcheck: "false", placeholder: "Title", type: "text" %>
       <%= form.text_area :content_zh_tw, id: "text-editor", class: "uploadable description bg-gray-100 sec p-3 h-60 border border-gray-300 outline-none", spellcheck: "false", placeholder: "Describe everything about this post here" %>

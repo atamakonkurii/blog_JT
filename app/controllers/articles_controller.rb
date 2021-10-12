@@ -6,11 +6,14 @@ class ArticlesController < ApplicationController
   # GET /articles or /articles.json
   def index
     @articles = Article.all
+    @tags = Article.tag_counts_on(:tags).order('count DESC')
+    @articles = Article.tagged_with((params[:tag_name]).to_s) if params[:tag_name]
   end
 
   # GET /articles/1 or /articles/1.json
   def show
     @user = @article.user
+    @tags = @article.tag_counts_on(:tags)
     return if browsing_authority?
 
     flash[:notice] = "この記事を閲覧する権限がありません"
@@ -107,7 +110,7 @@ class ArticlesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def article_params
-    params.require(:article).permit(:title_ja, :content_ja, :title_zh_tw, :content_zh_tw, :title_image,
+    params.require(:article).permit(:title_ja, :content_ja, :title_zh_tw, :content_zh_tw, :title_image, :tag_list,
                                     place_attributes: [:id, :country, :prefecture_japan_id, :prefecture_taiwan_id])
   end
 

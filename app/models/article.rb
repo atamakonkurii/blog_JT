@@ -11,6 +11,8 @@ class Article < ApplicationRecord
 
   mount_uploader :title_image, TitleImageUploader
 
+  acts_as_taggable
+
   scope :visible, -> { where(visible_list: true) }
   scope :recent, ->(limit=99) { order(id: "DESC").limit(limit) }
 
