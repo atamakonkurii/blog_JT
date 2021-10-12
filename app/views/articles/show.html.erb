@@ -53,6 +53,17 @@
         <%= markdown(@article.locale_judge_content(@locale)) %>
       </div>
     </div>
+
+    <% if @tags.present? %>
+      <div class="my-1">
+        <% @tags.each do |tag| %>
+          <span class="m-1 bg-gray-200 hover:bg-gray-300 rounded-full px-2 font-bold text-sm leading-loose cursor-pointer">
+            #<%= link_to tag.name, articles_path(tag_name: tag.name), method: :get %>
+          </span>
+        <% end %>
+      </div>
+    <% end %>
+
     <br>
     <hr class="border-b-2 border-gray-400 mb-1 mx-4">
     <%= render 'author', user: @user %>
