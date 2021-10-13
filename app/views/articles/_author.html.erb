@@ -25,6 +25,11 @@
             <i class="fab fa-instagram"></i>
           </a>
         <% end %>
+        <% if user.youtube.present? %>
+          <a href=<%= user.youtube %> class="ml-3 text-gray-500">
+            <i class="fab fa-youtube"></i>
+          </a>
+        <% end %>
         <% if user.amazon.present? %>
           <a href=<%= user.amazon %> class="ml-3 text-gray-500">
               <i class="fab fa-amazon"></i>

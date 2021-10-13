@@ -34,8 +34,12 @@
           <%= form.text_field :instagram, :class => "mb-4 bg-gray-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", :placeholder => "https://www.instagram.com/〇〇" %>
         </div>
         <div>
+          <%= form.label "youtube", :class => "block text-gray-600 text-sm font-semibold mb-2" %>
+          <%= form.text_field :youtube, :class => "mb-4 bg-gray-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", :placeholder => "https://www.youtube.com/channel/〇〇" %>
+        </div>
+        <div>
           <%= form.label "amazonほしい物リスト", :class => "block text-gray-600 text-sm font-semibold mb-2" %>
-          <%= form.text_field :amazon, :class => "mb-4 bg-gray-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", :placeholder => "https://twitter.com/〇〇" %>
+          <%= form.text_field :amazon, :class => "mb-4 bg-gray-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", :placeholder => "https://www.amazon.jp/〇〇" %>
         </div>
         <div><%= form.submit "保存", class: "mt-2 bg-nittai_teal hover:bg-nittai_teal_strong text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %></div>
       <% end %>
