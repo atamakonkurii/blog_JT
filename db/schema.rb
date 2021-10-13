@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_12_112148) do
+ActiveRecord::Schema.define(version: 2021_10_13_231406) do
 
   create_table "articles", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title_ja"
@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(version: 2021_10_12_112148) do
     t.text "twitter"
     t.text "instagram"
     t.text "amazon"
+    t.text "youtube"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
