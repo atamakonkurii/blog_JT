@@ -1,15 +1,15 @@
 <section class="text-gray-600 body-font">
   <div class="container px-5 py-12 mx-auto">
-    <% if @tags.present? %>
-      <h3 class="flex justify-center items-center font-bold text-xs">TAGS</h3>
-      <div class="mb-4">
-        <% @tags.each do |tag| %>
-          <span class="m-1 bg-gray-200 hover:bg-gray-300 rounded-full px-2 font-bold text-sm leading-loose cursor-pointer">
-            #<%= link_to "#{tag.name}(#{tag.taggings_count})", articles_path(tag_name: tag.name), method: :get %>
-          </span>
-        <% end %>
-      </div>
-    <% end %>
+    <%# if @tags.present? %>
+<!--      <h3 class="flex justify-center items-center font-bold text-xs">TAGS</h3>-->
+<!--      <div class="mb-4">-->
+        <%# @tags.each do |tag| %>
+<!--          <span class="m-1 bg-gray-200 hover:bg-gray-300 rounded-full px-2 font-bold text-sm leading-loose cursor-pointer">-->
+<!--            #<%#= link_to "#{tag.name}(#{tag.taggings_count})", articles_path(tag_name: tag.name), method: :get %>-->
+<!--          </span>-->
+        <%# end %>
+<!--      </div>-->
+    <%# end %>
     <div class="flex flex-wrap -m-4">
       <% @articles.published.visible.order(id: "DESC").each do |article| %>
         <%= link_to(article) do %>
@@ -26,9 +26,7 @@
                 <div class="markdown">
                   <%= markdown(article.locale_judge_content(@locale)).gsub(/<("[^"]*"|'[^']*'|[^'">])*>/, "").slice(0, 50) %>
                 </div>
-                <div class="flex items-center flex-wrap ">
-                  <a class="text-blue-500 inline-flex items-center md:mb-2 lg:mb-0">
-                  </a>
+                <div class="flex items-center flex-wrap">
                   <p class="text-sm md:text-base font-normal text-gray-400">
                     <% if article.place&.country == "japan" %>
                       <%= "日本 #{article.place&.prefecture_japan&.name}" %>
