@@ -3,7 +3,6 @@ class Article < ApplicationRecord
   has_one :place, dependent: :destroy
   accepts_nested_attributes_for :place
 
-  has_many :tags, dependent: :destroy
   has_many :comments, dependent: :destroy
 
   enum main_language: { japanese: 0, taiwanese: 1, english: 2 }
@@ -11,10 +10,26 @@ class Article < ApplicationRecord
 
   mount_uploader :title_image, TitleImageUploader
 
-  acts_as_taggable
+  acts_as_taggable_on :japan_tags, :taiwan_tags
 
   scope :visible, -> { where(visible_list: true) }
   scope :recent, ->(limit=99) { order(id: "DESC").limit(limit) }
+
+  def self.tag_counts_on_locale(language)
+    if language == 'ja'
+      tag_counts_on(:japan_tags)
+    else
+      tag_counts_on(:taiwan_tags)
+    end
+  end
+
+  def tag_counts_on_locale(language)
+    if language == 'ja'
+      tag_counts_on(:japan_tags)
+    else
+      tag_counts_on(:taiwan_tags)
+    end
+  end
 
   def translate_title_and_content
     translate_client = Aws::Translate::Client.new(
