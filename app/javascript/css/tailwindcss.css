@@ -80,7 +80,7 @@
 }
 
 .youtube {
-    @apply relative overflow-hidden pb-9/16;
+    @apply relative overflow-hidden pb-9/16 mb-3;
 }
 
 .youtube iframe {
