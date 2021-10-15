@@ -67,13 +67,14 @@ class Article < ApplicationRecord
                                                        })
 
     # <p translate=no>とそれに紐づく</p>を削除
+    translated_title = response_title.translated_text.gsub(%r{(<p translate=no>|</p>)}, '')
     translated_content = response_content.translated_text.gsub(%r{(<p translate=no>|</p>)}, '')
 
     if main_language_japanese?
-      self.title_zh_tw = response_title.translated_text
+      self.title_zh_tw = translated_title
       self.content_zh_tw = translated_content
     else
-      self.title_ja = response_title.translated_text
+      self.title_ja = translated_title
       self.content_ja = translated_content
     end
   end

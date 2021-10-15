@@ -19,7 +19,7 @@ window.onload = function(){
 
     document.getElementById("image-up").onclick=function(){
         let area = document.getElementById('text-editor');
-        let text = "### ";
+        let text = "<p translate=no></p>";
         //カーソルの位置を基準に前後を分割して、その間に文字列を挿入
         area.value = area.value.substr(0, area.selectionStart)
             + text
