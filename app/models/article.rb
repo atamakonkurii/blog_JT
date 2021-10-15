@@ -38,7 +38,7 @@ class Article < ApplicationRecord
       secret_access_key: Rails.application.credentials.dig(:aws, :secret_access_key)
     )
 
-    replace_tag = '<p translate=no>\&</p>'
+    replace_tag = '<span translate=no>\&</span>'
 
     if main_language_japanese?
       target_title = title_ja
@@ -67,8 +67,8 @@ class Article < ApplicationRecord
                                                        })
 
     # <p translate=no>とそれに紐づく</p>を削除
-    translated_title = response_title.translated_text.gsub(%r{(<p translate=no>|</p>)}, '')
-    translated_content = response_content.translated_text.gsub(%r{(<p translate=no>|</p>)}, '')
+    translated_title = response_title.translated_text.gsub(%r{(<span translate=no>|</span>)}, '')
+    translated_content = response_content.translated_text.gsub(%r{(<span translate=no>|</span>)}, '')
 
     if main_language_japanese?
       self.title_zh_tw = translated_title
@@ -89,7 +89,7 @@ class Article < ApplicationRecord
     # contentがblankなら空白を返す
     return '' if title.blank?
 
-    title
+    title.gsub(%r{(<span translate=no>|</span>)}, '')
   end
 
   def locale_judge_content(language)
