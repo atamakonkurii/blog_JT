@@ -156,6 +156,7 @@ en:
       create: Article was successfully created.
       update: Article was successfully updated.
       draft: Article was successfully draft.
+    reccomend: Reccomend articles
   number:
     currency:
       format:
