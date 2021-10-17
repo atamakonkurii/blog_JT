@@ -14,7 +14,7 @@ class ArticlesController < ApplicationController
   def show
     @user = @article.user
     @tags = @article.tag_counts_on_locale(@locale)
-    @articles = Article.visible.published.order("RAND()").limit(3)
+    @articles = Article.visible.published.where.not(id: @article.id).order("RAND()").limit(3)
     return if browsing_authority?
 
     flash[:notice] = "この記事を閲覧する権限がありません"
