@@ -156,6 +156,7 @@ ja:
       create: 記事を作成しました
       update: 記事を更新しました
       draft: 下書きを保存しました
+    reccomend: おすすめ記事
   number:
     currency:
       format:
