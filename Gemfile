@@ -86,3 +86,4 @@ gem 'aws-sdk'
 gem 'meta-tags'
 
 gem 'acts-as-taggable-on', '~> 8.0'
+gem 'jquery-ui-rails'
