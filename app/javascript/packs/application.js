@@ -7,10 +7,7 @@ require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
 window.$ = window.jQuery = require('jquery');
-//= require jquery_ujs
-//= require jquery.turbolinks
-//= require jquery-ui
-
+require('jquery-ui')
 
 import "./inline-attachment/inline-attachment"
 import "./inline-attachment/jquery.inline-attachment"
@@ -20,6 +17,7 @@ import '@fortawesome/fontawesome-free/js/all'
 
 import "../css/tailwindcss.css";
 
+import "../stylesheets/application"
 import "./tag-it/tag-it"
 
-import "../stylesheets/application"
+import "./article/tag_predict"

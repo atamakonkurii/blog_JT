@@ -1,5 +1,4 @@
 <%= javascript_pack_tag 'article/image_upload_press_button' %>
-<%= javascript_pack_tag 'article/tag_predict' %>
 
 <%= form_with(model: article) do |form| %>
   <% if article.errors.any? %>
@@ -42,17 +41,16 @@
       <% end %>
     </div>
     <div class="field bg-gray-100 border border-gray-300 p-2 mb-4 outline-none">
-      <%= form.text_field :japan_tag_list, value: article.japan_tag_list.join(','), class: "tag_form bg-transparent w-full", placeholder: "japan tag1, tag2, max tag3" %>
+      <%= form.text_field :japan_tag_list, value: article.japan_tag_list.join(','), class: "bg-transparent w-full", placeholder: "japan tag1, tag2, max tag3" %>
+      <ul class="tagit ui-widget ui-widget-content ui-corner-all">
+        <li class="tagit-new">
+          <%= form.text_field class: "ui-widget-content ui-autocomplete-input", autocomplete: "off", placeholder: "あああ" %>
+        </li>
+      </ul>
     </div>
     <div class="field bg-gray-100 border border-gray-300 p-2 mb-4 outline-none">
-      <%= form.text_field :taiwan_tag_list, value: article.taiwan_tag_list.join(','), class: "tag_form bg-transparent w-full", placeholder: "taiwan tag1, tag2, max tag3" %>
+      <%= form.text_field :taiwan_tag_list, value: article.taiwan_tag_list.join(','), class: "bg-transparent w-full", placeholder: "taiwan tag1, tag2, max tag3" %>
     </div>
-
-    <ul id="tag_form">
-      <!-- Existing list items will be pre-added to the tags -->
-      <li>Tag1</li>
-      <li>Tag2</li>
-    </ul>
 
     <% if current_user.native_language == "japanese" %>
       <%= form.text_area :title_ja, class: "title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none", spellcheck: "false", placeholder: "タイトル", type: "text" %>
