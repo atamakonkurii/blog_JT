@@ -7,7 +7,7 @@ class ArticlesController < ApplicationController
   def index
     @articles = Article.all
     # @tags = Article.tag_counts_on_locale(@locale).order('count DESC').limit(30)
-    @articles = Article.tagged_with(params[:tag_name].to_s) if params[:tag_name]
+    @articles = Article.tagged_with(params[:tag_name].to_s).distinct if params[:tag_name]
   end
 
   # GET /articles/1 or /articles/1.json
