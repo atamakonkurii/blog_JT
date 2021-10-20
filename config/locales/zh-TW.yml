@@ -156,7 +156,7 @@ zh-TW:
       create: 文章已新增
       update: 文章已更新
       draft: 儲存草稿
-    reccomend: 推薦文章
+    recommend: 推薦文章
   number:
     currency:
       format:
