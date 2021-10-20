@@ -29,40 +29,37 @@
             <%= "台灣 #{@article.place&.prefecture_taiwan&.name}" %>
           <% end %>
         </p>
-          <span class="flex pt-1">
-            <%= link_to(@article.user) do %>
-              <%= image_tag @article.user.avatar.url, class: "rounded-full h-10 w-10 border-2 border-white dark:border-gray-800" if @article&.user&.avatar&.present? %>
+        <% if @tags.present? %>
+          <div class="flex items-center flex-wrap my-1">
+            <% @tags.each do |tag| %>
+              <%= link_to tag.name, articles_path(tag_name: tag.name), method: :get, class: "m-0.5 bg-gray-200 hover:bg-gray-300 rounded-md px-2 text-xs leading-loose cursor-pointer" %>
             <% end %>
-            <div class="text-xs md:text-sm font-normal text-gray-400 pl-1 my-auto">
-              <%= link_to(@article.user) do %>
-                <p><%= @article.user&.name %></p>
-              <% end %>
-              <time datetime="<%= @article.created_at %>">
-                <%= I18n.l(@article.created_at.in_time_zone('Asia/Tokyo'), format: :long) %>
-              </time>
-            </div>
-            <div class="ml-auto mr-4 my-auto text-gray-400">
-              <a href="https://www.facebook.com/share.php?u=<%= request.url %>" rel="nofollow" target="_blank"><i class="fab fa-facebook"></i></a>
-              <a href="https://twitter.com/share?url=<%= request.url %>"><i class="fab fa-twitter ml-2"></i></a>
-              <a href="https://line.me/R/msg/text/?<%= request.url %>"><i class="fab fa-line ml-2"></i></a>
-            </div>
-          </span>
+          </div>
+        <% end %>
+        <span class="flex pt-1">
+          <%= link_to(@article.user) do %>
+            <%= image_tag @article.user.avatar.url, class: "rounded-full h-10 w-10 border-2 border-white dark:border-gray-800" if @article&.user&.avatar&.present? %>
+          <% end %>
+          <div class="text-xs md:text-sm font-normal text-gray-400 pl-1 my-auto">
+            <%= link_to(@article.user) do %>
+              <p><%= @article.user&.name %></p>
+            <% end %>
+            <time datetime="<%= @article.created_at %>">
+              <%= I18n.l(@article.created_at.in_time_zone('Asia/Tokyo'), format: :long) %>
+            </time>
+          </div>
+          <div class="ml-auto mr-4 my-auto text-gray-400">
+            <a href="https://www.facebook.com/share.php?u=<%= request.url %>" rel="nofollow" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://twitter.com/share?url=<%= request.url %>"><i class="fab fa-twitter ml-2"></i></a>
+            <a href="https://line.me/R/msg/text/?<%= request.url %>"><i class="fab fa-line ml-2"></i></a>
+          </div>
+        </span>
       </div>
 
       <div id="youtube" class="markdown">
         <%= markdown(@article.locale_judge_content(@locale)) %>
       </div>
     </div>
-
-    <% if @tags.present? %>
-      <div class="my-1">
-        <% @tags.each do |tag| %>
-          <span class="m-1 bg-gray-200 hover:bg-gray-300 rounded-full px-2 font-bold text-sm leading-loose cursor-pointer">
-            #<%= link_to tag.name, articles_path(tag_name: tag.name), method: :get %>
-          </span>
-        <% end %>
-      </div>
-    <% end %>
 
     <br>
     <hr class="border-b-2 border-gray-400 mb-1 mx-4">
