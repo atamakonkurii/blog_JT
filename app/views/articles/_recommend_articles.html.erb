@@ -31,6 +31,13 @@
                     <% end %>
                   </p>
                 </div>
+                <% if article.tag_counts_on_locale(@locale).present? %>
+                  <div class="flex items-center flex-wrap my-1">
+                    <% article.tag_counts_on_locale(@locale).each do |tag| %>
+                      <%= link_to tag.name, articles_path(tag_name: tag.name), method: :get, class: "m-0.5 bg-gray-200 hover:bg-gray-300 rounded-md px-2 text-xs leading-loose cursor-pointer" %>
+                    <% end %>
+                  </div>
+                <% end %>
                 <%= link_to(article.user) do %>
                   <span class="flex pt-1">
                     <%= image_tag article.user.avatar.url, class: "rounded-full h-10 w-10 border-2 border-white dark:border-gray-800" if article&.user&.avatar&.present? %>
