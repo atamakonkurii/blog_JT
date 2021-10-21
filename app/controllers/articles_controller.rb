@@ -3,9 +3,11 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show edit update destroy translate_content]
   after_action :translate_contents, only: %i[ create update ], if: -> { @article.published? }
 
+  PER = 9
+
   # GET /articles or /articles.json
   def index
-    @articles = Article.all
+    @articles = Article.all.page(params[:page]).per(PER)
     # @tags = Article.tag_counts_on_locale(@locale).order('count DESC').limit(30)
     @articles = Article.tagged_with(params[:tag_name].to_s).distinct if params[:tag_name]
   end
