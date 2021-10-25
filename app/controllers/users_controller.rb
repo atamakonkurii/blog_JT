@@ -4,9 +4,9 @@ class UsersController < ApplicationController
 
   def show
     @articles = if current_user == @user
-                  @user.articles.visible.recent
+                  @user.articles.visible.recent.page(params[:page]).per(Article::PER_PAGE)
                 else
-                  @user.articles.published.visible.recent
+                  @user.articles.published.visible.recent.page(params[:page]).per(Article::PER_PAGE)
                 end
   end
 

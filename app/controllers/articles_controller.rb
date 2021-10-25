@@ -5,9 +5,9 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    @articles = Article.all
+    @articles = Article.visible.published.recent.page(params[:page]).per(Article::PER_PAGE)
     # @tags = Article.tag_counts_on_locale(@locale).order('count DESC').limit(30)
-    @articles = Article.tagged_with(params[:tag_name].to_s).distinct if params[:tag_name]
+    @articles = Article.published.visible.recent.tagged_with(params[:tag_name].to_s).distinct.page(params[:page]).per(Article::PER_PAGE) if params[:tag_name]
   end
 
   # GET /articles/1 or /articles/1.json
