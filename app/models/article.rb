@@ -13,7 +13,7 @@ class Article < ApplicationRecord
   acts_as_taggable_on :japan_tags, :taiwan_tags
 
   scope :visible, -> { where(visible_list: true) }
-  scope :recent, ->(limit=99) { order(id: "DESC").limit(limit) }
+  scope :recent, ->{ order(id: "DESC")}
 
   PER_PAGE = 6
 

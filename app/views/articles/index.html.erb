@@ -11,7 +11,7 @@
 <!--      </div>-->
     <%# end %>
     <div class="flex flex-wrap -m-4">
-      <% @articles.recent.each do |article| %>
+      <% @articles.each do |article| %>
         <%= link_to(article) do %>
           <div class="p-4 md:w-1/3">
             <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
