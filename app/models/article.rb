@@ -15,6 +15,8 @@ class Article < ApplicationRecord
   scope :visible, -> { where(visible_list: true) }
   scope :recent, ->(limit=99) { order(id: "DESC").limit(limit) }
 
+  PER_PAGE = 12
+
   def self.tag_counts_on_locale(language)
     if language == 'ja'
       tag_counts_on(:japan_tags)
