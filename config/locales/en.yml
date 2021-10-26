@@ -226,3 +226,6 @@ en:
       previous: "&lsaquo;"
       next: "&rsaquo;"
       truncate: "..."
+  meta-tags:
+    title: "作者詳細資訊"
+    description: "作者社群網路和文章列表的網頁"

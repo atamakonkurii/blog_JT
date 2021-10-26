@@ -224,3 +224,6 @@ ja:
       previous: "&lsaquo;"
       next: "&rsaquo;"
       truncate: "..."
+  meta-tags:
+    title: "著者詳細ページ"
+    description: "著者のSNS情報と記事一覧を表示したページです。"

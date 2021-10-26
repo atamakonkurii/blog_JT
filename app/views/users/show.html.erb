@@ -1,3 +1,5 @@
+<% set_meta_tags title: t('meta-tags.title'), description: t('meta-tags.description'), og: { title: t('meta-tags.title') } %>
+
 <% if user_signed_in? && @user == current_user %>
   <p><%= link_to "プロフィール編集", edit_user_path(current_user) %></p>
   <p><%= link_to "新規記事作成", new_article_path %></p>
@@ -21,25 +23,25 @@
           <i class="fab fa-facebook fa-lg"></i>
         </a>
       <% end %>
-      <% if @user.twitter.present? %>
+        <% if @user.twitter.present? %>
         <a href=<%= @user.twitter %> class="ml-3 text-gray-500">
           <i class="fab fa-twitter fa-lg"></i>
-        </a>
+          </a>
       <% end %>
-      <% if @user.instagram.present? %>
+        <% if @user.instagram.present? %>
         <a href=<%= @user.instagram %> class="ml-3 text-gray-500">
           <i class="fab fa-instagram fa-lg"></i>
-        </a>
+          </a>
       <% end %>
-      <% if @user.youtube.present? %>
+        <% if @user.youtube.present? %>
         <a href=<%= @user.youtube %> class="ml-3 text-gray-500">
           <i class="fab fa-youtube"></i>
-        </a>
+          </a>
       <% end %>
-      <% if @user.amazon.present? %>
+        <% if @user.amazon.present? %>
         <a href=<%= @user.amazon %> class="ml-3 text-gray-500">
             <i class="fab fa-amazon fa-lg"></i>
-        </a>
+          </a>
       <% end %>
     </span>
       <p class="text-xs p-2 bg-nittai_teal text-white px-4 rounded-full">
