@@ -45,13 +45,13 @@ class Article < ApplicationRecord
     if main_language_japanese?
       target_title = title_ja
       # マークダウンの#と画像ファイルを翻訳しないようにする
-      target_content = content_ja.gsub(%r{(^#+ )|(!\[file\]\().+\)|(<iframe.*</iframe>)}, replace_tag)
+      target_content = content_ja.gsub(%r{(^#+ )|(!\[file\]\().+\)|(<iframe.*</iframe>)|(<blockquote.*<\/blockquote>.<script async src="//www.instagram.com/embed.js"></script>)}, replace_tag)
       source_language_code = "ja"
       target_language_code = "zh-TW"
     else
       target_title = title_zh_tw
       # マークダウンの#と画像ファイルを翻訳しないようにする
-      target_content = content_zh_tw.gsub(%r{(^#+ )|(!\[file\]\().+\)|(<iframe.*</iframe>)}, replace_tag)
+      target_content = content_zh_tw.gsub(%r{(^#+ )|(!\[file\]\().+\)|(<iframe.*</iframe>)|(<blockquote.*<\/blockquote>.<script async src="//www.instagram.com/embed.js"></script>)}, replace_tag)
       source_language_code = "zh-TW"
       target_language_code = "ja"
     end
