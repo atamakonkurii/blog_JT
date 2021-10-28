@@ -40,18 +40,20 @@ class Article < ApplicationRecord
       secret_access_key: Rails.application.credentials.dig(:aws, :secret_access_key)
     )
 
-    replace_tag = '<span translate=no>\&</span>'
+    replace_tag = '112233'
 
     if main_language_japanese?
       target_title = title_ja
+      no_translate_array = no_translate_array_scan(content_ja)
       # マークダウンの#と画像ファイルを翻訳しないようにする
-      target_content = content_ja.gsub(%r{(^#+ )|(!\[file\]\().+\)|(<iframe.*</iframe>)|(<blockquote.*<\/blockquote>.<script async src="//www.instagram.com/embed.js"></script>)}, replace_tag)
+      target_content = content_ja.gsub(%r{(^#+ )|(!\[file\]\(.+\))|(<iframe.*</iframe>)|(<blockquote.*<\/blockquote>.<script async src="//www.instagram.com/embed.js"></script>)}, replace_tag)
       source_language_code = "ja"
       target_language_code = "zh-TW"
     else
       target_title = title_zh_tw
+      no_translate_array = no_translate_array_scan(content_zh_tw)
       # マークダウンの#と画像ファイルを翻訳しないようにする
-      target_content = content_zh_tw.gsub(%r{(^#+ )|(!\[file\]\().+\)|(<iframe.*</iframe>)|(<blockquote.*<\/blockquote>.<script async src="//www.instagram.com/embed.js"></script>)}, replace_tag)
+      target_content = content_zh_tw.gsub(%r{(^#+ )|(!\[file\]\(.+\))|(<iframe.*</iframe>)|(<blockquote.*<\/blockquote>.<script async src="//www.instagram.com/embed.js"></script>)}, replace_tag)
       source_language_code = "zh-TW"
       target_language_code = "ja"
     end
@@ -70,7 +72,11 @@ class Article < ApplicationRecord
 
     # <p translate=no>とそれに紐づく</p>を削除
     translated_title = response_title.translated_text.gsub(%r{(<span translate=no>|</span>)}, '')
-    translated_content = response_content.translated_text.gsub(%r{(<span translate=no>|</span>)}, '')
+    translated_content = response_content.translated_text
+
+    no_translate_array.each do |text|
+      translated_content.sub!(/112233/, text)
+    end
 
     if main_language_japanese?
       self.title_zh_tw = translated_title
@@ -121,5 +127,9 @@ class Article < ApplicationRecord
 
   def main_language_japanese?
     main_language == "japanese"
+  end
+
+  def no_translate_array_scan(content)
+    content.scan(%r{^#+ |!\[file\]\(.+\)|<iframe.*</iframe>|<blockquote.*</blockquote>.<script async src="//www.instagram.com/embed.js"></script>})
   end
 end
