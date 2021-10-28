@@ -72,7 +72,7 @@ class Article < ApplicationRecord
 
     # <p translate=no>とそれに紐づく</p>を削除
     translated_title = response_title.translated_text.gsub(%r{(<span translate=no>|</span>)}, '')
-    translated_content = response_content.translated_text
+    translated_content = response_content.translated_text.gsub(%r{(<span translate=no>|</span>)}, '')
 
     no_translate_array.each do |text|
       translated_content.sub!(/112233/, text)
