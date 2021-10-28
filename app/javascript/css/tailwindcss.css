@@ -79,6 +79,10 @@
     @apply mx-2;
 }
 
+.markdown iframe {
+    @apply max-w-full;
+}
+
 .youtube {
     @apply relative overflow-hidden pb-9/16 mb-3;
 }
