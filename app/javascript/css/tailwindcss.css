@@ -86,3 +86,11 @@
 .youtube iframe {
     @apply absolute h-full w-full object-contain;
 }
+
+.google_map {
+    @apply relative overflow-hidden pb-9/16 mb-3;
+}
+
+.google_map iframe {
+    @apply absolute h-full w-full object-contain;
+}
