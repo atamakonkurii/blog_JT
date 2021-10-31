@@ -40,7 +40,7 @@ class Article < ApplicationRecord
       secret_access_key: Rails.application.credentials.dig(:aws, :secret_access_key)
     )
 
-    replace_tag = '112233'
+    replace_tag = '<span translate=no>a123z</span>'
 
     if main_language_japanese?
       target_title = title_ja
@@ -75,8 +75,10 @@ class Article < ApplicationRecord
     translated_content = response_content.translated_text.gsub(%r{(<span translate=no>|</span>)}, '')
 
     no_translate_array.each do |text|
-      translated_content.sub!(/112233/, text)
+      translated_content.sub!(/a123z/, text)
     end
+
+    @temp4 = translated_content
 
     if main_language_japanese?
       self.title_zh_tw = translated_title
