@@ -1,4 +1,4 @@
-window.onload = function(){
+window.addEventListener('DOMContentLoaded', function() {
     document.getElementById("place").onclick=function(){
         let area = document.getElementById('text-editor');
         let text = "# ";
@@ -25,4 +25,4 @@ window.onload = function(){
             + text
             + area.value.substr(area.selectionStart);
     }
-}
+})
