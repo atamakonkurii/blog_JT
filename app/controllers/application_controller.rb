@@ -10,6 +10,8 @@ class ApplicationController < ActionController::Base
   end
 
   def locale
+    # 経路によってurlのパラメータが小文字になってしまうため強制的に変更する
+    params[:locale] = "zh-TW" if params[:locale] == "zh-tw"
     @locale ||= params[:locale] || I18n.default_locale
   end
 
