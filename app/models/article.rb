@@ -13,9 +13,9 @@ class Article < ApplicationRecord
   acts_as_taggable_on :japan_tags, :taiwan_tags
 
   scope :visible, -> { where(visible_list: true) }
-  scope :recent, ->{ order(id: "DESC")}
+  scope :recent, -> { order(id: "DESC") }
 
-  PER_PAGE = 6
+  PER_PAGE = 9
 
   def self.tag_counts_on_locale(language)
     if language == 'ja'
@@ -46,14 +46,18 @@ class Article < ApplicationRecord
       target_title = title_ja
       no_translate_array = no_translate_array_scan(content_ja)
       # マークダウンの#と画像ファイルを翻訳しないようにする
-      target_content = content_ja.gsub(%r{(^#+ )|(!\[file\]\(.+\))|(<iframe.*</iframe>)|(<blockquote.*<\/blockquote>.<script async src="//www.instagram.com/embed.js"></script>)}, replace_tag)
+      target_content = content_ja.gsub(
+        %r{(^#+ )|(!\[file\]\(.+\))|(<iframe.*</iframe>)|(<blockquote.*</blockquote>.<script async src="//www.instagram.com/embed.js"></script>)}, replace_tag
+      )
       source_language_code = "ja"
       target_language_code = "zh-TW"
     else
       target_title = title_zh_tw
       no_translate_array = no_translate_array_scan(content_zh_tw)
       # マークダウンの#と画像ファイルを翻訳しないようにする
-      target_content = content_zh_tw.gsub(%r{(^#+ )|(!\[file\]\(.+\))|(<iframe.*</iframe>)|(<blockquote.*<\/blockquote>.<script async src="//www.instagram.com/embed.js"></script>)}, replace_tag)
+      target_content = content_zh_tw.gsub(
+        %r{(^#+ )|(!\[file\]\(.+\))|(<iframe.*</iframe>)|(<blockquote.*</blockquote>.<script async src="//www.instagram.com/embed.js"></script>)}, replace_tag
+      )
       source_language_code = "zh-TW"
       target_language_code = "ja"
     end

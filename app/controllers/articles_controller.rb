@@ -7,7 +7,15 @@ class ArticlesController < ApplicationController
   def index
     @articles = Article.visible.published.recent.page(params[:page]).per(Article::PER_PAGE)
     # @tags = Article.tag_counts_on_locale(@locale).order('count DESC').limit(30)
-    @articles = Article.published.visible.recent.tagged_with(params[:tag_name].to_s).distinct.page(params[:page]).per(Article::PER_PAGE) if params[:tag_name]
+
+    return if params[:tag_name].blank?
+
+    tagged_article = Article.published.visible.recent.tagged_with(params[:tag_name].to_s).distinct
+    if tagged_article.present?
+      @articles = tagged_article.page(params[:page]).per(Article::PER_PAGE)
+    else
+      flash[:notice] = "タグの記事は存在しません"
+    end
   end
 
   # GET /articles/1 or /articles/1.json
