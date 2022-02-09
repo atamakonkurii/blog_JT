@@ -1,4 +1,4 @@
-class Article < ApplicationRecord
+class  Article < ApplicationRecord
   belongs_to :user
   has_one :place, dependent: :destroy
   accepts_nested_attributes_for :place
