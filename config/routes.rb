@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   post 'articles/attach', to: 'articles#attach'
 
-  namespace :api, {format: 'json'} do
+  namespace :api, { format: 'json' } do
     namespace :v1 do
       resources :articles
     end

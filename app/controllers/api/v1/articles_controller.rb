@@ -1,7 +1,7 @@
 module Api
   module V1
     class ArticlesController < ApplicationController
-      skip_before_action :authenticate_user!, only: %i[ index ]
+      skip_before_action :authenticate_user!, only: %i[index]
       before_action :set_article
       before_action :set_article_json
 
