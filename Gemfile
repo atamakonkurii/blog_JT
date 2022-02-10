@@ -92,4 +92,7 @@ gem 'kaminari'
 gem "mini_magick"
 
 gem 'bugsnag'
+gem 'annotate'
+
+gem 'jsonapi-serializer'
 
