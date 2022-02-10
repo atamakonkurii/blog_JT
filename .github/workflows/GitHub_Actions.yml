@@ -26,7 +26,7 @@ jobs:
 
     #MySQLをインストール
     - name: Install dependent libralies
-      run: sudo apt-get install libmysqlclient-dev
+      run: sudo apt-get install default-libmysqlclient-dev
 
     - name: Setup bundler
       run: gem install bundler
