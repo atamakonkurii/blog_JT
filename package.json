@@ -10,6 +10,8 @@
     "@rails/webpacker": "5.4.0",
     "autoprefixer": "^9",
     "jquery": "^3.6.0",
+    "jquery-ui": "^1.13.0",
+    "jquery.turbolinks": "^2.1.0",
     "postcss": "^7",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "turbolinks": "^5.2.0",

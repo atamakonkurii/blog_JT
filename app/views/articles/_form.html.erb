@@ -42,6 +42,11 @@
     </div>
     <div class="field bg-gray-100 border border-gray-300 p-2 mb-4 outline-none">
       <%= form.text_field :japan_tag_list, value: article.japan_tag_list.join(','), class: "bg-transparent w-full", placeholder: "japan tag1, tag2, max tag3" %>
+      <ul class="tagit ui-widget ui-widget-content ui-corner-all">
+        <li class="tagit-new">
+          <%= form.text_field class: "ui-widget-content ui-autocomplete-input", autocomplete: "off", placeholder: "あああ" %>
+        </li>
+      </ul>
     </div>
     <div class="field bg-gray-100 border border-gray-300 p-2 mb-4 outline-none">
       <%= form.text_field :taiwan_tag_list, value: article.taiwan_tag_list.join(','), class: "bg-transparent w-full", placeholder: "taiwan tag1, tag2, max tag3" %>
