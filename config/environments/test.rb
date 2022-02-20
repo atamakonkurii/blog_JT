@@ -57,4 +57,7 @@ Rails.application.configure do
 
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
+
+  # cors許可のurl
+  config.allow_origins = %w[http://localhost:8000 https://qualtrics.stoplight.io/]
 end
