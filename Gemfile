@@ -95,4 +95,5 @@ gem 'bugsnag'
 gem 'annotate'
 
 gem 'jsonapi-serializer'
+gem 'rack-cors'
 
