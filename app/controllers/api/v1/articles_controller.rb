@@ -10,11 +10,12 @@ module Api
       end
 
       def set_article
-        @articles = Article.all
+        @articles = Article.all.visible.published.recent
       end
 
       def set_article_json
-        serializer = ArticleSerializer.new(@articles)
+        options = { include: %i[user] }
+        serializer = ArticleSerializer.new(@articles, options)
         serializer.serializable_hash.to_json
       end
     end
