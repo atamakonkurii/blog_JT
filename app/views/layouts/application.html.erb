@@ -11,6 +11,8 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <% if Rails.env.production? %>
       <%= render 'layouts/google_analytics' %>
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2561919805541187"
+              crossorigin="anonymous"></script>
     <% end %>
     <%= display_meta_tags(default_meta_tags).force_encoding("UTF-8") %>
   </head>
